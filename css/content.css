@@ -1,0 +1,20 @@
+.link{
+	font:Verdana, Arial, Helvetica, sans-serif;
+	font-size:25px;	
+}
+
+.linkcontent{
+	float:right;
+	width:70%;
+}
+
+.linkbox{
+	border-width: 2;
+	border-color: #3300CC;
+	clear:both;
+}
+
+a{
+	text-decoration:none;
+
+}
