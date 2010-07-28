@@ -1,23 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "post".
+ * This is the model class for table "category".
  */
-class Post extends CActiveRecord
+class Category extends CActiveRecord
 {
 	/**
-	 * The followings are the available columns in table 'post':
+	 * The followings are the available columns in table 'category':
 	 * @var integer $id
-	 * @var string $title
-	 * @var string $url
-	 * @var string $remarks
-	 * @var integer $clicks
-	 * @var string $dateUpdated
+	 * @var string $category
 	 */
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Post the static model class
+	 * @return Category the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +25,7 @@ class Post extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'post';
+		return 'category';
 	}
 
 	/**
@@ -40,14 +36,11 @@ class Post extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, url, remarks', 'required'),
-			array('clicks', 'numerical', 'integerOnly'=>true),
-			array('title, url', 'length', 'max'=>255),
-			array('remarks', 'length', 'max'=>500),
-			array('dateUpdated', 'safe'),
+			array('category', 'required'),
+			array('category', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, url, remarks, clicks, dateUpdated', 'safe', 'on'=>'search'),
+			array('id, category', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,7 +52,7 @@ class Post extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'categories' => array(self::MANY_MANY, 'Category', 'post_category(postid, categoryid)'),
+			'posts' => array(self::MANY_MANY, 'Post', 'post_category(postid, categoryid)'),
 		);
 	}
 
@@ -70,11 +63,7 @@ class Post extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'url' => 'Url',
-			'remarks' => 'Remarks',
-			'clicks' => 'Clicks',
-			'dateUpdated' => 'Date Updated',
+			'category' => 'Category',
 		);
 	}
 
@@ -91,15 +80,7 @@ class Post extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 
-		$criteria->compare('title',$this->title,true);
-
-		$criteria->compare('url',$this->url,true);
-
-		$criteria->compare('remarks',$this->remarks,true);
-
-		$criteria->compare('clicks',$this->clicks);
-
-		$criteria->compare('dateUpdated',$this->dateUpdated,true);
+		$criteria->compare('category',$this->category,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
