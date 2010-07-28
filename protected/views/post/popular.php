@@ -14,7 +14,7 @@ $this->breadcrumbs=array(
 			echo '<div class="linkbox" >';
 			
 			echo '<div class="linkcontent">';
-			echo "<div><a href=\"$post->url\"><span class=\"link\">$post->title</span></a></div>";
+			echo "<div><a href=\"index.php?r=/post/view&id=$post->id\"><span class=\"link\">$post->title</span></a></div>";
 			echo "<div class>Clicks: $post->clicks </div>";
 			echo "<div class=\"remarks\">Remarks: $post->remarks</div>";
 			echo '</div>';
