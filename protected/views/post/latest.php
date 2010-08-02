@@ -28,6 +28,14 @@ $this->breadcrumbs=array(
 			echo "<div><a href=\"index.php?r=/post/view&id=$post->id\"><span class=\"link\">$post->title</span></a></div>";
 			echo "<div class>Clicks: $post->clicks </div>";
 			echo "<div class=\"remarks\">Remarks: $post->remarks</div>";
+			echo "<div class=\"categories\">";
+				$categories=$post->categories;
+				
+				for($c=0;$c<sizeof($categories);$c++){
+					$category=$categories[$c];
+					echo $category->name;
+				}
+			echo "</div>";
 			echo '</div>';
 			
 			echo "<div><img src=\"http://localhost/apache_pb2.png\" width=250></img></div>";
