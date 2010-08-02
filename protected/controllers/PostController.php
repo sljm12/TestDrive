@@ -39,6 +39,9 @@ class PostController extends Controller
 	public function actionAdd()
 	{
 		$model=new Post;
+		$criteria=new CDbCriteria();
+		$criteria->order="name desc";
+		$categories=Category::model()->findAll($criteria);
 
 		// uncomment the following code to enable ajax-based validation
 		/*
@@ -64,7 +67,7 @@ class PostController extends Controller
 				//return;
 			}
 		}
-		$this->render('add',array('model'=>$model));
+		$this->render('add',array('model'=>$model,'categories'=>$categories));
 	}
 	
 	public function actionView(){

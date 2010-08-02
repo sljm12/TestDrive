@@ -23,9 +23,17 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'remarks'); ?>
-		<?php echo $form->textField($model,'remarks'); ?>
+		<?php echo $form->textArea($model,'remarks'); ?>
 		<?php echo $form->error($model,'remarks'); ?>
 	</div>
+
+	<?php 
+		for($i=0;$i<sizeof($categories);$i++){
+			$category=$categories[$i];
+			echo CHtml::label($category->name,$category->name);
+			echo CHtml::checkBox($category->id);
+		}
+	?>
 <!--
 	Click are calculated internally and not shown	
 	<div class="row">
