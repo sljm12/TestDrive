@@ -6,8 +6,8 @@ class PostController extends Controller
 {
 	public function actionIndex()
 	{
-		$this->render('index');
-	}
+		$this->render('index');		
+	}	
 
 	// Uncomment the following methods and override them if needed
 	/*
@@ -35,16 +35,14 @@ class PostController extends Controller
 		);
 	}
 	*/
-	
+
 	public function actionAdd()
 	{
 		$model=new Post;
-		$criteria=new CDbCriteria();
-		$criteria->order="name desc";
-		$categories=Category::model()->findAll($criteria);
+		$categories=$this->getAllCategories();
 
 		// uncomment the following code to enable ajax-based validation
-		/*
+		/*http://130.164.10.138/trac/newticket
 		if(isset($_POST['ajax']) && $_POST['ajax']==='post-add-form')
 		{
 			echo CActiveForm::validate($model);
@@ -55,13 +53,17 @@ class PostController extends Controller
 		if(isset($_POST['Post']))
 		{
 			$model->attributes=$_POST['Post'];
+			$categories=$this->getCategoriesfromPost();
 			if($model->validate())
 			{
 				// form inputs are valid, do something here
 				
 				$model->dateUpdated=new CDbExpression("datetime('now')");
 				$model->clicks=1;
+				//$model->categories=$categories;
+				//$model->addRelatedRecord('categories',$categories,true);
 				if($model->save()){
+					$model->addCategories($model->id,$categories);
 					$this->redirect(array('view','id'=>$model->id));
 				}
 				//return;
@@ -69,6 +71,25 @@ class PostController extends Controller
 		}
 		$this->render('add',array('model'=>$model,'categories'=>$categories));
 	}
+
+	private function getAllCategories(){
+		$criteria=new CDbCriteria();
+		$criteria->order="name asc";
+		$categories=Category::model()->findAll($criteria);
+		return $categories;
+	}
+
+	private function getCategoriesfromPost(){
+		$categories=$this->getAllCategories();
+		$results=array();
+		foreach($categories as $category){
+			if(isset($_POST[$category->id])){
+				$results[]=$category;
+			}
+		}
+		return $results;
+	}
+
 	
 	public function actionView(){
 		$model==null;

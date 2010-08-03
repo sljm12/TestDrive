@@ -105,4 +105,15 @@ class Post extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public function addCategories($postid,$categories){
+		$connection=Yii::app()->db;
+		$command=$connection->createCommand('insert into post_category values(:postid,:categoryid)');
+		$command->bindParam(':postid',$postid,PDO::PARAM_INT);
+
+		foreach($categories as $category){
+			$command->bindParam(':categoryid',$category->id,PDO::PARAM_INT);
+			$command->execute();
+		}
+	}
 }
