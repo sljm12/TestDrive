@@ -12,6 +12,17 @@ $this->breadcrumbs=array(
 		<div id="postInfo">
 			Clicks: <?php echo $model->clicks ?><br>			
 		</div>
+		<div class="categories">
+			<?php 
+				$categories=$model->categories;
+				if(sizeof($categories)>0){
+					echo "Category: ";
+					foreach($categories as $category){
+						echo "$category->name ";
+					}
+				}
+			?>
+		</div>
 	</div>
 	<div id="linkPicture">
 		<img width="250" src=<?php echo $imageUrl ?>/>
