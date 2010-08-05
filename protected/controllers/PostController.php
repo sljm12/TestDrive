@@ -138,9 +138,12 @@ class PostController extends Controller
 		
 		$criteria->limit=4;
 		$criteria->offset=$_GET['offset'];
+
 		$next=$offset+4;
+		$prev=$offset-4;
+
 		$posts=Post::model()->findAll($criteria);
 		$count=Post::model()->count($criteria);
-		$this->render('popular',array('posts'=>$posts,'count'=>$count,'next'=>$next));
+		$this->render('popular',array('posts'=>$posts,'count'=>$count,'next'=>$next,'prev'=>$prev));
 	}
 }

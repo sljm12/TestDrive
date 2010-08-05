@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 
 <p>	
 	<?php
-		echo "Offset: $next <br>";
+		echo "Offset: Prev: $prev Next: $next <br>";
 		echo "Count: $count <br>";
 		echo "<div id=\"links\">";
 		for ($i=0;$i<sizeof($posts);$i++){
@@ -23,11 +23,16 @@ $this->breadcrumbs=array(
 			echo '</div>';
 		}
 		echo "</div>";
-		
+
+		echo '<div style="clear:both">';
+		if($prev >= 0){
+			echo "<a href=\"index.php?r=post/popular&offset=$prev\">Prev</a>";
+		}
 		if($next < $count){
 			echo "<a href=\"index.php?r=post/popular&offset=$next\">Next</a>";
 		}else{
 			echo "Last Page";
 		}
+		echo '</div>';
 	?>
 </p>
