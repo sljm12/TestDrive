@@ -120,29 +120,36 @@ class PostController extends Controller
 	}
 	
 	public function actionLatest(){
+		/*
 		$criteria=new CDbCriteria();
 		$criteria->order='dateUpdated desc';
-		$posts=Post::model()->findAll($criteria);
-		$this->render('latest',array('posts'=>$posts));
-	}
-	
-	public function actionPopular(){
-		
-		$criteria=new CDbCriteria();
-		$criteria->order='clicks desc';
+		$posts=Post::model()->findAll($criteria);*/
+
 		$offset=0;
-		
+		 
 		if(isset($_GET['offset'])){	
 			$offset=$_GET['offset'];
 		}
-		
-		$criteria->limit=4;
-		$criteria->offset=$_GET['offset'];
 
 		$next=$offset+4;
 		$prev=$offset-4;
 
-		$posts=Post::model()->findAll($criteria);
+		$posts=Post::model()->getDateUpdatedDesc(4,$offset);
+		$count=Post::model()->count($criteria);
+		$this->render('latest',array('posts'=>$posts,'count'=>$count,'next'=>$next,'prev'=>$prev));
+	}
+	
+	public function actionPopular(){
+		$offset=0;
+		 
+		if(isset($_GET['offset'])){	
+			$offset=$_GET['offset'];
+		}
+
+		$next=$offset+4;
+		$prev=$offset-4;
+
+		$posts=Post::model()->getClicksDesc(4,$offset);
 		$count=Post::model()->count($criteria);
 		$this->render('popular',array('posts'=>$posts,'count'=>$count,'next'=>$next,'prev'=>$prev));
 	}

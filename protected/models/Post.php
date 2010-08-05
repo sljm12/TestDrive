@@ -116,4 +116,26 @@ class Post extends CActiveRecord
 			$command->execute();
 		}
 	}
+
+	public function getClicksDesc($limit,$offset){
+		$criteria=new CDbCriteria();
+		$criteria->order='clicks desc';
+		
+		$criteria->limit=$limit;
+		$criteria->offset=$offset;
+
+		$posts=Post::model()->findAll($criteria);
+		return $posts;
+	}
+
+	public function getDateUpdatedDesc($limit,$offset){
+		$criteria=new CDbCriteria();
+		$criteria->order='dateUpdated desc';
+		
+		$criteria->limit=$limit;
+		$criteria->offset=$offset;
+
+		$posts=Post::model()->findAll($criteria);
+		return $posts;
+	}
 }
