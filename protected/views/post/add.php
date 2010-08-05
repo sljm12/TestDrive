@@ -1,3 +1,12 @@
+<style type="text/css">
+	.category_label{
+		display:block;
+	}
+	.category_input{
+		width:10px;			
+		vertical-align:bottom;
+	}
+</style>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -30,8 +39,14 @@
 	<?php 
 		for($i=0;$i<sizeof($categories);$i++){
 			$category=$categories[$i];
-			echo CHtml::label($category->name,$category->name);
-			echo CHtml::checkBox($category->id);
+			//echo CHtml::label($category->name,$category->name);
+			//echo CHtml::checkBox($category->id);
+			echo <<<BLOCK
+				<label class="category_label" for="$category->name">
+					<input class="category_input" id="$category->id" type="checkbox" value="1" name="$category->id"/>
+					$category->name
+				</label>
+BLOCK;
 		}
 	?>
 <!--
