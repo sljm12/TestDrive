@@ -28,6 +28,7 @@ $this->breadcrumbs=array(
 			echo "<div><a href=\"index.php?r=/post/view&id=$post->id\"><span class=\"link\">$post->title</span></a></div>";
 			echo "<div class>Clicks: $post->clicks </div>";
 			echo "<div class=\"remarks\">Remarks: $post->remarks</div>";
+			echo "<div class=\"remarks\">Date Updated: $post->dateUpdated</div>";
 			echo "<div class=\"categories\">";
 				$categories=$post->categories;
 				
