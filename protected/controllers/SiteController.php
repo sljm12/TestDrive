@@ -100,4 +100,25 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	
+	/**
+	* Login using OpenID
+	*/
+	public function actionOpenIDLogin() {
+        $openid=new EOpenID;
+ 
+        if(!isset($_GET['openid_mode'])) {
+            if(isset($_POST['openid_identifier'])) {
+                $openid->authenticate($_POST['openid_identifier']);
+            }
+        }
+        elseif(isset($_GET['openid_mode'])) {
+            $openid->validate();
+            Yii::app()->user->login($openid);
+			$this->render('loggedin',array('openid'=>$openid));
+			return;
+        }
+ 
+        $this->render('openIDLogin',array('openid'=>$openid));
+    }
 }

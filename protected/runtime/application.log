@@ -242,3 +242,57 @@ REQUEST_URI=/testdrive/index.php?r=/post/view&id=15
 in C:\xampp\htdocs\testdrive\protected\views\post\view.php (19)
 in C:\xampp\htdocs\testdrive\protected\controllers\PostController.php (102)
 in C:\xampp\htdocs\testdrive\index.php (12)
+2010/09/23 05:49:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "openid".' in C:\xampp\htdocs\yii\framework\web\CController.php:439
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(262): CController->missingAction('openid')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): CController->run('openid')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController('site/openid')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\TestDrive\index.php(12): CApplication->run()
+#5 {main} REQUEST_URI=/testdrive/index.php?r=site/openid
+2010/09/23 05:50:13 [error] [exception.ErrorException] exception 'ErrorException' with message 'Curl extension is required.' in C:\xampp\htdocs\TestDrive\protected\components\EOpenID.php:101
+Stack trace:
+#0 C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php(108): EOpenID->__construct()
+#1 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(32): SiteController->actionOpenIDLogin()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): CController->run('OpenIDLogin')
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController('site/OpenIDLogi...')
+#7 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\TestDrive\index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/testdrive/index.php?r=site/OpenIDLogin
+2010/09/23 08:54:16 [error] [php] Object of class EOpenID could not be converted to string (C:\xampp\htdocs\TestDrive\protected\views\site\loggedin.php:4)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(748): SiteController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(687): SiteController->renderPartial()
+#2 C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php(118): SiteController->render()
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(32): SiteController->actionOpenIDLogin()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(278): SiteController->runAction()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(257): SiteController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): SiteController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\TestDrive\index.php(12): CWebApplication->run()
+REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2010-09-23T08%3A53%3A45ZPyAye8KJ0vKzFQ&openid.return_to=http%3A%2F%2Flocalhost%2Ftestdrive%2Findex.php%3Fr%3Dsite%2FopenIDLogin&openid.assoc_handle=AOQobUffXihfTvptft2SxMw9hL6oE9mJK8-8BPbP8338DjCu3ESWYl-P&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=h%2Fg0Qzoltos8jtZWHBm1NrJqa8s%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A
+in C:\xampp\htdocs\TestDrive\protected\views\site\loggedin.php (4)
+in C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php (118)
+in C:\xampp\htdocs\TestDrive\index.php (12)
+2010/09/23 08:57:11 [error] [php] Object of class EOpenID could not be converted to string (C:\xampp\htdocs\TestDrive\protected\views\site\loggedin.php:4)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(748): SiteController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(687): SiteController->renderPartial()
+#2 C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php(118): SiteController->render()
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(32): SiteController->actionOpenIDLogin()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(278): SiteController->runAction()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(257): SiteController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): SiteController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\TestDrive\index.php(12): CWebApplication->run()
+REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2010-09-23T08%3A53%3A45ZPyAye8KJ0vKzFQ&openid.return_to=http%3A%2F%2Flocalhost%2Ftestdrive%2Findex.php%3Fr%3Dsite%2FopenIDLogin&openid.assoc_handle=AOQobUffXihfTvptft2SxMw9hL6oE9mJK8-8BPbP8338DjCu3ESWYl-P&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=h%2Fg0Qzoltos8jtZWHBm1NrJqa8s%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A
+in C:\xampp\htdocs\TestDrive\protected\views\site\loggedin.php (4)
+in C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php (118)
+in C:\xampp\htdocs\TestDrive\index.php (12)
