@@ -296,3 +296,16 @@ REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.ns=http%3A%2F%2Fspecs
 in C:\xampp\htdocs\TestDrive\protected\views\site\loggedin.php (4)
 in C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php (118)
 in C:\xampp\htdocs\TestDrive\index.php (12)
+2010/09/28 09:35:44 [error] [exception.ErrorException] exception 'ErrorException' with message 'No identity supplied.' in C:\xampp\htdocs\testdrive\protected\components\EOpenID.php:234
+Stack trace:
+#0 C:\xampp\htdocs\testdrive\protected\components\EOpenID.php(528): EOpenID->discover()
+#1 C:\xampp\htdocs\testdrive\protected\controllers\SiteController.php(116): EOpenID->validate()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(32): SiteController->actionOpenIDLogin()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(300): CInlineAction->run(Object(CInlineAction))
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(278): CController->runAction(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(257): CController->runActionWithFilters('openIDLogin')
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): CController->run('site/openIDLogi...')
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\testdrive\index.php(12): CApplication->run()
+#10 {main} REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.mode=cancel&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0
