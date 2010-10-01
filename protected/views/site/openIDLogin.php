@@ -1,11 +1,12 @@
 
 <div class="form">
 <?php echo CHtml::beginForm(); ?>
- 
+	Click on your OpenID provider below<p>
 	<div class="providers">
-		<span id="google">Google</span>
-		<span id="yahoo">Yahoo</span>
+		<span id="google" class="provider">Google</span>
+		<span id="yahoo" class="provider">Yahoo</span>
 	</div>
+	<p>
     <div class="row">
         <?php echo CHtml::label('Identifier:', 'openid_identifier'); ?>
         <?php echo CHtml::textField('openid_identifier', '', array('size'=>40)); ?>
