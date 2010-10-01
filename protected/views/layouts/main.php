@@ -52,7 +52,7 @@
 	<?php echo $content; ?>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by blogshop.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by ipostishop.com.<br/>
 		All Rights Reserved.<br/>
 		<!-- <?php echo Yii::powered(); ?>-->
 	</div><!-- footer -->
