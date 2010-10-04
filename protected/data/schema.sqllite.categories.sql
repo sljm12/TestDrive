@@ -1,0 +1,15 @@
+insert into category(name) values('books');
+insert into category(name) values('cell Phones');
+insert into category(name) values('clothings');
+insert into category(name) values('gadgets');
+insert into category(name) values('computers');
+insert into category(name) values('entertainment and games');
+insert into category(name) values('health and beauty');
+insert into category(name) values('jewelleries');
+insert into category(name) values('music');
+insert into category(name) values('pets');
+insert into category(name) values('sports');
+insert into category(name) values('tickets and vouchers');
+insert into category(name) values('toys and hobbies');
+insert into category(name) values('travel');
+insert into category(name) values('watches');
