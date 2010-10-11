@@ -90,7 +90,7 @@ class SiteController extends Controller
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
-	}
+	}	
 
 	/**
 	 * Logs out the current user and redirect to homepage.
@@ -115,10 +115,47 @@ class SiteController extends Controller
         elseif(isset($_GET['openid_mode'])) {
             $openid->validate();
             Yii::app()->user->login($openid);
-			$this->render('loggedin',array('openid'=>$openid));
+			/*
+			Check if user has fill in details before if has redirect to last page else redirect to new user page
+			*/
+			//$this->render('loggedin',array('openid'=>$openid));
+			$openIdUrl=$openid->getIdentity();
+			if($this->openidUrlFound($openIdUrl)){
+				$userDetails=Userdetails::model()->getUserByOpenIdUrl($openIdUrl);
+				$openid->setState("name",$userDetails->username);
+				
+				Yii::app()->user->login($openid);
+				$this->redirect(Yii::app()->homeUrl);
+			}else{
+				Yii::app()->user->login($openid);
+				$this->redirect(array('newuser','openid'=>$openid->getIdentity()));
+			}
 			return;
         }
  
         $this->render('openIDLogin',array('openid'=>$openid));
     }
+	
+	private function openidUrlFound($url){
+		return Userdetails::model()->isOpenIdUrlFound($url);
+	}
+	
+	public function actionNewuser(){
+		$model=new Userdetails();
+	
+		if(isset($_POST['Userdetails'])){
+			$model->attributes=$_POST['Userdetails'];
+			if($model->validate()){
+				if($model->save()){
+					$this->redirect(Yii::app()->homeUrl);
+				}else{
+					throw new CHttpException(500,'Error in saving User Details.');
+				}
+			}
+		}
+		
+		$model->openidurl=$_GET['openid'];
+		$this->render('newuser',array('model'=>$model));
+		
+	}
 }

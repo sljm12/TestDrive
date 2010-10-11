@@ -309,3 +309,92 @@ Stack trace:
 #8 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
 #9 C:\xampp\htdocs\testdrive\index.php(12): CApplication->run()
 #10 {main} REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.mode=cancel&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0
+2010/10/08 04:31:56 [error] [php] urlencode() expects parameter 1 to be string, object given (C:\xampp\htdocs\yii\framework\web\CUrlManager.php:370)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CUrlManager.php(243): CUrlManager->createUrlDefault()
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(254): CUrlManager->createUrl()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(824): CWebApplication->createUrl()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(881): SiteController->createUrl()
+#4 C:\xampp\htdocs\testdrive\protected\controllers\SiteController.php(119): SiteController->redirect()
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(32): SiteController->actionOpenIDLogin()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(278): SiteController->runAction()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(257): SiteController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): SiteController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\testdrive\index.php(12): CWebApplication->run()
+REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.assoc_handle=%7BHMAC-SHA1%7D%7B4cae9ebb%7D%7B7rwsVg%3D%3D%7D&openid.claimed_id=http%3A%2F%2Flocalhost%2Fopenid%2Fexamples%2Fserver%2Fserver.php%2Fidpage%3Fuser%3Dstephen&openid.identity=http%3A%2F%2Flocalhost%2Fopenid%2Fexamples%2Fserver%2Fserver.php%2Fidpage%3Fuser%3Dstephen&openid.mode=id_res&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.sreg=http%3A%2F%2Fopenid.net%2Fextensions%2Fsreg%2F1.1&openid.op_endpoint=http%3A%2F%2Flocalhost%2Fopenid%2Fexamples%2Fserver%2Fserver.php&openid.response_nonce=2010-10-08T04%3A31%3A55ZNULLh8&openid.return_to=http%3A%2F%2Flocalhost%2Ftestdrive%2Findex.php%3Fr%3Dsite%2FopenIDLogin&openid.sig=yV%2Bqm%2FtVL4%2FcgJjRGoJ81zuVWJY%3D&openid.signed=assoc_handle%2Cclaimed_id%2Cidentity%2Cmode%2Cns%2Cns.sreg%2Cop_endpoint%2Cresponse_nonce%2Creturn_to%2Csigned
+in C:\xampp\htdocs\testdrive\protected\controllers\SiteController.php (119)
+in C:\xampp\htdocs\testdrive\index.php (12)
+2010/10/08 14:17:00 [error] [exception.ErrorException] exception 'ErrorException' with message 'Curl extension is required.' in D:\xampplite\htdocs\testdrive\protected\components\EOpenID.php:101
+Stack trace:
+#0 D:\xampplite\htdocs\testdrive\protected\controllers\SiteController.php(108): EOpenID->__construct()
+#1 D:\xampplite\htdocs\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionOpenIDLogin()
+#2 D:\xampplite\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#3 D:\xampplite\htdocs\yii\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#4 D:\xampplite\htdocs\yii\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 D:\xampplite\htdocs\yii\framework\web\CWebApplication.php(324): CController->run('openIDLogin')
+#6 D:\xampplite\htdocs\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('site/openIDLogi...')
+#7 D:\xampplite\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#8 D:\xampplite\htdocs\testdrive\index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/testdrive/index.php?r=site/openIDLogin
+2010/10/08 14:17:00 [error] [exception.ErrorException] exception 'ErrorException' with message 'Curl extension is required.' in D:\xampplite\htdocs\testdrive\protected\components\EOpenID.php:101
+Stack trace:
+#0 D:\xampplite\htdocs\testdrive\protected\controllers\SiteController.php(108): EOpenID->__construct()
+#1 D:\xampplite\htdocs\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionOpenIDLogin()
+#2 D:\xampplite\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#3 D:\xampplite\htdocs\yii\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#4 D:\xampplite\htdocs\yii\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 D:\xampplite\htdocs\yii\framework\web\CWebApplication.php(324): CController->run('openIDLogin')
+#6 D:\xampplite\htdocs\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('site/openIDLogi...')
+#7 D:\xampplite\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#8 D:\xampplite\htdocs\testdrive\index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/testdrive/index.php?r=site/openIDLogin
+2010/10/11 13:37:10 [error] [system.db.CDbCommand] Error in preparing SQL: SELECT * FROM 'userdetails' 't' WHERE openidurl:=openidurl LIMIT 1
+in C:\xampp\htdocs\TestDrive\protected\models\Userdetails.php (109)
+in C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php (124)
+in C:\xampp\htdocs\TestDrive\index.php (12)
+2010/10/11 13:37:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to prepare the SQL statement: SQLSTATE[HY000]: General error: 1 unrecognized token: ":"' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:121
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(174): CDbCommand->prepare()
+#1 C:\xampp\htdocs\yii\framework\db\schema\CDbCommandBuilder.php(410): CDbCommand->bindValue(':openidurl', 'https://www.goo...')
+#2 C:\xampp\htdocs\yii\framework\db\schema\CDbCommandBuilder.php(87): CDbCommandBuilder->bindValues(Object(CDbCommand), Array)
+#3 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1174): CDbCommandBuilder->createFindCommand(Object(CDbTableSchema), Object(CDbCriteria))
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1230): CActiveRecord->query(Object(CDbCriteria))
+#5 C:\xampp\htdocs\TestDrive\protected\models\Userdetails.php(109): CActiveRecord->find('openidurl:=open...', Array)
+#6 C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php(124): Userdetails->getUserByOpenIdUrl('https://www.goo...')
+#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(32): SiteController->actionOpenIDLogin()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): CController->run('openIDLogin')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController('site/openIDLogi...')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\TestDrive\index.php(12): CApplication->run()
+#15 {main} REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2010-10-11T13%3A36%3A38ZNCGi1qTZ3LKx8Q&openid.return_to=http%3A%2F%2Flocalhost%2Ftestdrive%2Findex.php%3Fr%3Dsite%2FopenIDLogin&openid.assoc_handle=AOQobUdiQVa_YPcAw4NgfF-lNS8O7srRNy7UWRPEir_TV-MC8GaMeHvO&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=sk9EEWakPcmQiP2IkUgUd%2BZISUg%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A
+2010/10/11 13:37:36 [error] [exception.CException] exception 'CException' with message 'Property "EOpenID.name" is read only.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:170
+Stack trace:
+#0 C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php(125): CComponent->__set('name', 'Stephenlee')
+#1 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(32): SiteController->actionOpenIDLogin()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): CController->run('openIDLogin')
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController('site/openIDLogi...')
+#7 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\TestDrive\index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2010-10-11T13%3A37%3A03Zv8JzBN0bJCkhvw&openid.return_to=http%3A%2F%2Flocalhost%2Ftestdrive%2Findex.php%3Fr%3Dsite%2FopenIDLogin&openid.assoc_handle=AOQobUf2989NdXn4cjt8AANmGva-0GTvw7yNlyENR9hTtGGsTGgYNb28&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=rqjscfZd4uyyXg8HI6FySyK9AV4%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A
+2010/10/11 13:38:21 [error] [exception.CException] exception 'CException' with message 'EOpenID does not have a method named "setName".' in C:\xampp\htdocs\yii\framework\base\CComponent.php:237
+Stack trace:
+#0 [internal function]: CComponent->__call('setName', Array)
+#1 C:\xampp\htdocs\TestDrive\protected\controllers\SiteController.php(125): EOpenID->setName('Stephenlee')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(32): SiteController->actionOpenIDLogin()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(300): CInlineAction->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(320): CController->run('openIDLogin')
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(120): CWebApplication->runController('site/openIDLogi...')
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(135): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\TestDrive\index.php(12): CApplication->run()
+#10 {main} REQUEST_URI=/testdrive/index.php?r=site/openIDLogin&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2010-10-11T13%3A37%3A47ZgP1O3TSxoZVfZA&openid.return_to=http%3A%2F%2Flocalhost%2Ftestdrive%2Findex.php%3Fr%3Dsite%2FopenIDLogin&openid.assoc_handle=AOQobUe_qCp_r_tSRdISEYhf_95ZW2BTh_3oSoeK8m3j0f8zbtZ5Nss-&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=ZtF7veBDjGfngyUCPkICk7bvDWs%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawnS8m0eUQkoWjpCC-tJg-VlbdkoXysG4-A
