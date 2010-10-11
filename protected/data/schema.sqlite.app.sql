@@ -14,6 +14,8 @@ foreign key (postid) references post(id),
 primary key (postid,categoryid),
 foreign key (categoryid) references category(id));
 
+create table userdetails(userid Integer primary key autoincrement, username varchar(50),openidurl varchar(300), email varchar(255));
+
 insert into category(name) values('photography');
 insert into category(name) values('spree');
 insert into category(name) values('fashion');
