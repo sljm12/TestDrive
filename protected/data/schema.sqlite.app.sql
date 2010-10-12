@@ -3,7 +3,9 @@ create table post (id Integer Not null primary key autoincrement,
 		url varchar(255) not null,
 		remarks varchar(500) not null,
 		clicks Integer,
-		dateUpdated date default CURRENT_TIMESTAMP
+		dateUpdated date default CURRENT_TIMESTAMP,
+		userid varchar(300),
+		foreign key (userid) references userdetails(openidurl)
 );
 
 create table category(id Integer Not Null primary key autoincrement,

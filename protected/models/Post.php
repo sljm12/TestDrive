@@ -13,6 +13,7 @@ class Post extends CActiveRecord
 	 * @var string $remarks
 	 * @var integer $clicks
 	 * @var string $dateUpdated
+	 * @var string $userid
 	 */
 
 	/**
@@ -44,10 +45,11 @@ class Post extends CActiveRecord
 			array('clicks', 'numerical', 'integerOnly'=>true),
 			array('title, url', 'length', 'max'=>255),
 			array('remarks', 'length', 'max'=>500),
+			array('userid', 'length', 'max'=>300),
 			array('dateUpdated', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, url, remarks, clicks, dateUpdated', 'safe', 'on'=>'search'),
+			array('id, title, url, remarks, clicks, dateUpdated, userid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,6 +62,7 @@ class Post extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'categories' => array(self::MANY_MANY, 'Category', 'post_category(postid, categoryid)'),
+			'user' => array(self::BELONGS_TO, 'Userdetails', 'userid'),
 		);
 	}
 
@@ -75,6 +78,7 @@ class Post extends CActiveRecord
 			'remarks' => 'Remarks',
 			'clicks' => 'Clicks',
 			'dateUpdated' => 'Date Updated',
+			'userid' => 'Userid',
 		);
 	}
 
@@ -101,11 +105,13 @@ class Post extends CActiveRecord
 
 		$criteria->compare('dateUpdated',$this->dateUpdated,true);
 
+		$criteria->compare('userid',$this->userid,true);
+
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
 	}
-
+	
 	public function addCategories($postid,$categories){
 		$connection=Yii::app()->db;
 		$command=$connection->createCommand('insert into post_category values(:postid,:categoryid)');
