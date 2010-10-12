@@ -14,6 +14,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
+	<?php echo Yii::app()->user->id; ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -35,6 +36,7 @@
 		<?php echo $form->textArea($model,'remarks'); ?>
 		<?php echo $form->error($model,'remarks'); ?>
 	</div>
+	
 
 	<?php 
 		for($i=0;$i<sizeof($categories);$i++){

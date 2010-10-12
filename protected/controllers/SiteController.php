@@ -120,7 +120,7 @@ class SiteController extends Controller
 			*/
 			//$this->render('loggedin',array('openid'=>$openid));
 			$openIdUrl=$openid->getIdentity();
-			if($this->openidUrlFound($openIdUrl)){
+			if($this->openidUrlFound($openIdUrl)){			
 				$userDetails=Userdetails::model()->getUserByOpenIdUrl($openIdUrl);
 				$openid->setState("name",$userDetails->username);
 				

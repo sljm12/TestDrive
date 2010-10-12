@@ -54,6 +54,8 @@ class PostController extends Controller
 		{
 			$model->attributes=$_POST['Post'];
 			$categories=$this->getCategoriesfromPost();
+			
+			$model->userid=Yii::app()->user->id;
 			if($model->validate())
 			{
 				// form inputs are valid, do something here
