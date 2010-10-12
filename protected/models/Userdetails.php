@@ -96,17 +96,18 @@ class Userdetails extends CActiveRecord
 	}
 	
 	public function isOpenIdUrlFound($url){
-		$results=$this::model()->count("openidurl=:openidurl",array(':openidurl'=>$url));
+		
+		$results=Userdetails::model()->count("openidurl=:openidurl",array(':openidurl'=>$url));
 		
 		if($results>0){
 			return true;
 		}else{
 			return false;
-		}
+		}		
 	}
 	
 	public function getUserByOpenIdUrl($url){
-		$results=$this::model()->find("openidurl=:openidurl",array(":openidurl"=>$url));
+		$results=Userdetails::model()->find("openidurl=:openidurl",array(":openidurl"=>$url));
 		return $results;
 	}
 }
