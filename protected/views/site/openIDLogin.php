@@ -3,8 +3,8 @@
 <?php echo CHtml::beginForm(); ?>
 	Click on your OpenID provider below<p>
 	<div class="providers">
-		<span id="google" class="provider">Google</span>
-		<span id="yahoo" class="provider">Yahoo</span>
+		<span id="google" class="provider"><img src="<?php echo Yii::app()->request->baseUrl;?>/assets/openid/google.jpg" height=70/></span>
+		<span id="yahoo" class="provider"><img src="<?php echo Yii::app()->request->baseUrl;?>/assets/openid/yahoo.jpg" height=70/></span>
 	</div>
 	<p>
     <div class="row">
