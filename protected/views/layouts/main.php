@@ -35,12 +35,12 @@
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'Popular Links', 'url'=>array('/post/popular')),
 				array('label'=>'Latest Links', 'url'=>array('/post/latest')),
-				array('label'=>'Add new link', 'url'=>array('/post/add')),
+				array('label'=>'Add new link', 'url'=>array('/post/add'),'visible'=>!Yii::app()->user->isGuest),				
+				//array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Login using OpenID', 'url'=>array('/site/openIDLogin'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Login using OpenID', 'url'=>array('/site/openIDLogin'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->
