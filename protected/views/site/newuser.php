@@ -25,12 +25,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'openidurl'); ?>
-		<?php echo $form->textField($model,'openidurl'); ?>
-		<?php echo $form->error($model,'openidurl'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textArea($model,'email'); ?>
 		<?php echo $form->error($model,'email'); ?>

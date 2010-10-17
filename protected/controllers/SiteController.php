@@ -128,12 +128,12 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->homeUrl);
 			}else{
 				Yii::app()->user->login($openid);
-				$this->redirect(array('newuser','openid'=>$openid->getIdentity()));
+				$this->redirect(array('newuser'));
 			}
 			return;
         }
  
-        $this->render('openIDLogin',array('openid'=>$openid));
+        $this->render('openIDLogin');
     }
 	
 	private function openidUrlFound($url){
@@ -145,6 +145,9 @@ class SiteController extends Controller
 	
 		if(isset($_POST['Userdetails'])){
 			$model->attributes=$_POST['Userdetails'];
+			
+			$model->openidurl=Yii::app()->user->id;
+			
 			if($model->validate()){
 				if($model->save()){
 					$this->redirect(Yii::app()->homeUrl);
@@ -154,7 +157,6 @@ class SiteController extends Controller
 			}
 		}
 		
-		$model->openidurl=$_GET['openid'];
 		$this->render('newuser',array('model'=>$model));
 		
 	}
