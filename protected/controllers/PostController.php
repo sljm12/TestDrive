@@ -60,7 +60,8 @@ class PostController extends Controller
 			{
 				// form inputs are valid, do something here
 				
-				$model->dateUpdated=new CDbExpression("datetime('now')");
+				//$model->dateUpdated=new CDbExpression("datetime('now')"); //This is the one to use for SQl Lite
+				$model->dateUpdated=new CDbExpression("now()");//THis is the one to use for MySql
 				$model->clicks=1;
 				//$model->categories=$categories;
 				//$model->addRelatedRecord('categories',$categories,true);
