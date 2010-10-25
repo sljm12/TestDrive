@@ -16,11 +16,15 @@
 		})();
 
 	</script>
+	
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js" type="text/javascript"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.style-my-tooltips.js" type="text/javascript"></script>
 	
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style-my-tooltips.css" media="screen" />
+	
 	<!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
@@ -32,6 +36,17 @@
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	
+	<script type="text/javascript">  
+		$().ready(function() {  
+			//applies to all elements with title attribute. Change to ".class[title]" to select only elements with specific .class and title
+			$("[title]").style_my_tooltips({ 
+				tip_follows_cursor: "on", //on/off
+				tip_delay_time: 1000 //milliseconds
+			});  
+		});  
+	</script>
+	
+	
 	
 </head>
 
@@ -40,24 +55,28 @@
 <div class="container" id="page">
 
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
+		
+		<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'Popular Links', 'url'=>array('/post/popular')),
 				array('label'=>'Latest Links', 'url'=>array('/post/latest')),
 				array('label'=>'Add new link', 'url'=>array('/post/add'),'visible'=>!Yii::app()->user->isGuest),				
-				//array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Login using OpenID', 'url'=>array('/site/openIDLogin'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				//array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),				
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
+				array('label'=>'Login/Signup', 'url'=>array('/site/openIDLogin'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
-	</div><!-- mainmenu -->
+		</div><!-- mainmenu -->
+	</div><!-- header -->
+	
+	<div id="logoBox">		
+		<span id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></span>		
+		<!--<img id="biglogin" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/login.png" title="You can log in if you have a Google, Yahoo, Facebook or any OpenID Account!"/>-->
+	</div>
 
 	<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 		'links'=>$this->breadcrumbs,

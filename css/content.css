@@ -18,3 +18,17 @@ a{
 	text-decoration:none;
 
 }
+
+#biglogin{
+	//float:right;
+	padding-left:10px;
+	vertical-align:middle;
+}
+
+#logoBox{
+	padding-top:10px;
+}
+
+#logo{
+	vertical-align:middle;	
+}
