@@ -2,9 +2,6 @@
 $this->breadcrumbs=array(
 	'Post',
 );?>
-<!--
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
--->
 <p>	
 <!--
 	<?php
@@ -17,8 +14,8 @@ $this->breadcrumbs=array(
 	?>
 -->	
 	<?php
-		echo "Offset: $next <br>";
-		echo "Count: $count <br>";
+		//echo "Offset: $next <br>";
+		//echo "Count: $count <br>";
 		echo "<div id=\"links\">";
 		for ($i=0;$i<sizeof($posts);$i++){
 			$post=$posts[$i];
@@ -39,7 +36,9 @@ $this->breadcrumbs=array(
 			echo "</div>";
 			echo '</div>';
 			
-			echo "<div><img src=\"http://localhost/apache_pb2.png\" width=250></img></div>";
+			$imgUrl=get_screenshot_url($post->url);
+			
+			echo "<div><img src=".$imgUrl."></img></div>";
 			echo '</div>';
 		}
 		echo "</div>";
