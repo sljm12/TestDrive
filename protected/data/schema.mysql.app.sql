@@ -18,6 +18,13 @@ foreign key (categoryid) references category(id));
 
 create table userdetails(userid Integer primary key auto_increment, username varchar(50),openidurl varchar(300), email varchar(255));
 
+create table blogshop(id Integer primary key auto_increment, shopname varchar(255), url varchar(100), remarks varchar(300));
+
+create table blogshop_categories(blogshopid Integer,categoryid Integer,
+foreign key (blogshopid) references blogshop(id),
+primary key (blogshopid,categoryid),
+foreign key (categoryid) references category(id));
+
 insert into category(name) values('photography');
 insert into category(name) values('spree');
 insert into category(name) values('fashion');
