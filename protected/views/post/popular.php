@@ -15,6 +15,9 @@ $this->breadcrumbs=array(
 			$post=$posts[$i];
 			echo '<div class="linkbox" >';
 			
+			$imgUrl=get_screenshot_url($post->url);			
+			echo '<div class="blogImage"><img src="'.$imgUrl.'"></img></div>';
+			
 			echo '<div class="linkcontent">';
 			echo "<div><a href=\"index.php?r=/post/view&id=$post->id\"><span class=\"link\">$post->title</span></a></div>";
 			echo "<div class>Clicks: $post->clicks </div>";
@@ -22,9 +25,7 @@ $this->breadcrumbs=array(
 			echo "<div class=\"remarks\">Date Updated: $post->dateUpdated</div>";			
 			echo '</div>';
 			
-			$imgUrl=get_screenshot_url($post->url);
 			
-			echo "<div><img src=".$imgUrl."></img></div>";
 			echo '</div>';
 		}
 		echo "</div>";

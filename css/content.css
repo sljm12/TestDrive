@@ -3,15 +3,20 @@
 	font-size:25px;	
 }
 
-.linkcontent{
-	float:right;
-	width:70%;
-}
-
 .linkbox{
 	border-width: 2;
 	border-color: #3300CC;
 	clear:both;
+	width:100%
+}
+
+.linkbox .blogImage{
+	float:left;
+	width:250px;
+}
+
+.linkbox .linkcontent{
+	float:left;	
 }
 
 a{
