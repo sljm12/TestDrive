@@ -12,19 +12,20 @@
 <?php
 	for($i=0;$i<sizeof($categories);$i++){
 		$cat=$categories[$i];
-		echo '<div class="category">'.$cat->name.'</div>';
+		echo '<div class="category">'.
+			'<a href=index.php?r=blogshop/list&cat='.urlencode($cat->name).'>'.$cat->name.'</a></div>';
 	}
 ?>
 </div>
 
 <div>
 
-<?php echo sizeof($models) ?>
+<?php echo "Total size:".sizeof($shops) ?>
 <?php
-	for($i=0;$i<sizeof($models);$i++){
-		$model=$models[$i];
-		echo $model->id;
-		echo sizeof($model->categories);
+	for($i=0;$i<sizeof($shops);$i++){
+		$model=$shops[$i];
+		echo $model->shopname.'<br>';
+		echo 'Categories'.sizeof($model->categories);
 	}
 ?>
 

@@ -47,18 +47,18 @@ class BlogShopController extends Controller
 		$this->render('add',array('model'=>$model));
 	}
 	
-	public function actionList(){
-		$models=Blogshop::model()->findAll();
+	public function actionList(){		
 		
-		$categories=Category::model()->findAll();
+		$categories=Category::getAllCategories();
 		
 		if(isset($_GET['cat'])){
 			$cat=$_GET['cat'];
-			$this->render('list',array('categories'=>$categories));
+			$shops=Blogshop::model()->with(array('categories'=>array('condition'=>'name="'.$cat.'"')))->findAll();
+			$this->render('list',array('categories'=>$categories,'shops'=>$shops));
 			return;
 		}
 		
-		$this->render('list',array('categories'=>$categories,'models'=>$models));
+		$this->render('list',array('categories'=>$categories));
 	}
 
 }
