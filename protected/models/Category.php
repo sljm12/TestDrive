@@ -86,4 +86,11 @@ class Category extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public static function getAllCategories(){
+		$criteria=new CDbCriteria();
+		$criteria->order="name asc";
+		$categories=Category::model()->findAll($criteria);
+		return $categories;
+	}
 }

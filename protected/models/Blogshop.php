@@ -95,4 +95,6 @@ class Blogshop extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+
 }
