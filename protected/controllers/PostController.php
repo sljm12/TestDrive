@@ -35,6 +35,19 @@ class PostController extends Controller
 		);
 	}
 	*/
+	
+	public function filters()
+	{
+		return array('accessControl');
+	}
+	
+	public function accessRules()
+	{
+		return array(
+			array('deny','actions'=>array('add'),'users'=>array('?')),
+			array('allow','actions'=>array('add'),'users'=>array('@'))
+		);
+	}
 
 	public function actionAdd()
 	{
