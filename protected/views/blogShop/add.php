@@ -9,6 +9,9 @@
 </style>
 <div class="form">
 
+<?php
+	echo 'Selected categories'.count($selected);
+?>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'blogshop-add-form',
 	'enableAjaxValidation'=>false,
@@ -37,7 +40,19 @@
 		<?php echo $form->error($model,'remarks'); ?>
 	</div>
 	
-
+	<?php 
+		for($i=0;$i<sizeof($categories);$i++){
+			$category=$categories[$i];
+			//echo CHtml::label($category->name,$category->name);
+			//echo CHtml::checkBox($category->id);
+			echo <<<BLOCK
+				<label class="category_label" for="$category->name">
+					<input class="category_input" id="$category->id" type="checkbox" value="1" name="category[$category->id]"/>
+					$category->name
+				</label>
+BLOCK;
+		}
+	?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>

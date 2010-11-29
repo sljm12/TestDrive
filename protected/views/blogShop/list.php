@@ -14,8 +14,14 @@
 	.blogshop{
 		padding:5px;
 	}
+	
 </style>
-
+<?php
+	echo 'limit='.$limit.'<br>';
+	echo 'offset='.$offset.'<br>';
+	echo 'shops_count='.$shops_count.'<br>';
+?>
+<h2>Categories (Click on one !)</h2>
 <div id="categories">
 <?php
 	for($i=0;$i<sizeof($categories);$i++){
@@ -37,6 +43,19 @@
 		echo '<div class="link"><a href="'.$model->url.'">'.$model->shopname.'</a></div>';
 		echo '<div class="remarks">'.$model->remarks.'</div>';
 		echo '</div>';
+	}
+?>
+</div>
+
+<div class="nextBar">
+<?php
+	$next=$offset+$limit;
+	
+	if($next > $shops_count){
+		echo "Last Page";
+	}else{
+		echo '<a href="/index.php?r=blogshop/list?cat='.$cat->name.
+		'">Next Page</a>';
 	}
 ?>
 </div>
