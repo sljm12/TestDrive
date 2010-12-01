@@ -55,7 +55,8 @@ class BlogShopController extends Controller
 			if($model->validate()){
 				$selected_categories=$_POST['category'];				
 				if($model->save()){
-					$this->redirect('list');
+					$model->addCategories($model->id,$selected_categories);
+					$this->redirect(array('list'));
 				}else{
 					throw new CHttpException(500,'Error in saving Blogshop.');
 				}
@@ -99,7 +100,7 @@ class BlogShopController extends Controller
 			WHERE blogshop.id = blogshop_categories.blogshopid 
 			AND category.id = blogshop_categories.categoryid 
 			AND category.name = :cat 
-			limit :limit offset :offset',array(":cat"=>$cat,":limit"=>$limit,':offset'=>$offset));
+			limit :limit offset :offset',array(":cat"=>$cat,":limit"=>(int)$limit,':offset'=>(int)$offset));
 			
 			$this->render('list',array('categories'=>$categories,
 								'shops'=>$shops,

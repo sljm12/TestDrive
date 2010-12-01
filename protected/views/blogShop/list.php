@@ -51,10 +51,10 @@
 <?php
 	$next=$offset+$limit;
 	
-	if($next > $shops_count){
+	if($next >= $shops_count){
 		echo "Last Page";
 	}else{
-		echo '<a href="/index.php?r=blogshop/list?cat='.$cat->name.
+		echo '<a href="index.php?r=blogshop/list&cat='.$cat->name.'&limit='.$limit.'&offset='.$next.
 		'">Next Page</a>';
 	}
 ?>

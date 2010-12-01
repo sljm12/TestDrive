@@ -96,5 +96,15 @@ class Blogshop extends CActiveRecord
 		));
 	}
 	
+	public function addCategories($blogshopid,$categories){
+		$connection=Yii::app()->db;
+		$command=$connection->createCommand('insert into blogshop_categories values(:blogshopid,:categoryid)');
+		$command->bindParam(':blogshopid',$blogshopid,PDO::PARAM_INT);
+
+		foreach($categories as $category){
+			$command->bindParam(':categoryid',$category,PDO::PARAM_INT);
+			$command->execute();
+		}
+	}	
 
 }
