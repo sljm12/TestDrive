@@ -73,16 +73,27 @@ class BlogShopController extends Controller
 			$cat=$_GET['cat'];
 			//$shops=Blogshop::model()->with(array('categories'=>array('condition'=>'name="'.$cat.'"')))->findAll();
 			
+			$page=0;
+			
+			if(isset($_GET['page'])){
+				$page=$_GET['page'];
+			}
+			
+			/*
 			$offset=0;
 			if(isset($_GET['offset'])){
 				$offset=$_GET['offset'];
-			}
+			}*/
+			
+			//$offset=$page*$limit;
 			
 			$limit=1;
-			
+			/*
 			if(isset($_GET['limit'])){
 				$limit=$_GET['limit'];
-			}
+			}*/
+			
+			$offset=$page*$limit;
 			
 			/*
 			$criteria=new CDbCriteria;			
@@ -106,6 +117,7 @@ class BlogShopController extends Controller
 								'shops'=>$shops,
 								'limit'=>$limit,
 								'offset'=>$offset,
+								'page'=>$page,
 								'shops_count'=>$shops_count));
 			return;
 		}
