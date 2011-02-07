@@ -113,16 +113,41 @@ class BlogShopController extends Controller
 			AND category.name = :cat 
 			limit :limit offset :offset',array(":cat"=>$cat,":limit"=>(int)$limit,':offset'=>(int)$offset));
 			
+			$pages_count=ceil($shops_count/$limit);
+			
+			$front_page_limit=$this->getFrontLimitPage($pages_count,$page,5);
+			$back_page_limit=$this->getBackLimitPage($pages_count,$page,5);
+			
 			$this->render('list',array('categories'=>$categories,
-								'shops'=>$shops,
-								'limit'=>$limit,
-								'offset'=>$offset,
-								'page'=>$page,
-								'shops_count'=>$shops_count));
+								'shops'=>$shops,								
+								'page'=>$page,								
+								'front_limit_pages'=>$front_page_limit,
+								'back_limit_pages'=>$back_page_limit));
 			return;
 		}
 		
 		$this->render('list',array('categories'=>$categories));
+	}
+	
+	protected function getFrontLimitPage($pages,$current_page,$front_limit_pages){
+		
+		if( ($current_page-$front_limit_pages) < 0)
+		{
+			//$front_limit_pages=0;
+			return 0;
+		}else{
+			//$front_limit_pages=$current_page-$front_limit_pages;
+			return $current_page-$front_limit_pages;
+		}
+	}
+	
+	protected function getBackLimitPage($pages,$current_page,$back_limit_pages){
+		if( ($back_limit_pages + $page) > $pages)
+		{
+			return $pages;
+		}else{
+			return $page+$back_limit_pages;
+		}
 	}
 
 }

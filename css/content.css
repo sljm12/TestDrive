@@ -37,3 +37,14 @@ a{
 #logo{
 	vertical-align:middle;	
 }
+
+.current_page{
+display: inline;
+padding-right: 5px;
+font-weight: bold;
+}
+
+.not_current_page{
+	color: #999999;
+	padding-right: 5px;
+}
