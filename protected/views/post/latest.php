@@ -14,8 +14,12 @@ $this->breadcrumbs=array(
 	?>
 -->	
 	<?php
-		//echo "Offset: $next <br>";
-		//echo "Count: $count <br>";
+		echo "Offset: $next <br>";
+		echo "Count: $count <br>";
+		echo "Page: $page <br>";
+		echo "Pages: $pages <br>";
+		echo "Front: $front_limit <br>";
+		echo "back: $back_limit <br>";
 		echo "<div id=\"links\">";
 		for ($i=0;$i<sizeof($posts);$i++){
 			$post=$posts[$i];
@@ -36,23 +40,23 @@ $this->breadcrumbs=array(
 					$category=$categories[$c];
 					echo $category->name;
 				}
-			echo "</div>";
-			echo '</div>';
+			echo "</div>";//close linkcontent
+			echo '</div>';//close linkbox
 						
 			
 			
 			echo '</div>';
 		}
-		echo "</div>";
+		echo "</div>";//CLose links
 		
-		echo '<div style="clear:both">';
-		if($prev >= 0){
-			echo "<a href=\"index.php?r=post/latest&offset=$prev\">Prev</a>";
-		}
-		if($next < $count){
-			echo "<a href=\"index.php?r=post/latest&offset=$next\">Next</a>";
-		}else{
-			echo "Last Page";
+		echo '<div style="clear:both">';						
+		for($a=$front_limit;$a<$back_limit;$a++){
+			//If its the current page
+			if($a==$page){
+				echo '<div class="current_page">'.($a+1).'</div>';
+			}else{
+				echo '<a class="not_current_page" href="index.php?r=post/latest&page='.$a.'">'.($a+1).'</a>';
+			}
 		}
 		echo '</div>';
 	?>

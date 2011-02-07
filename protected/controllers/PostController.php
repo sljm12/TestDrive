@@ -133,26 +133,75 @@ class PostController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 			
 		
-	}
+	}	
 	
 	public function actionLatest(){
-		/*
-		$criteria=new CDbCriteria();
-		$criteria->order='dateUpdated desc';
-		$posts=Post::model()->findAll($criteria);*/
-
-		$offset=0;
-		 
-		if(isset($_GET['offset'])){	
-			$offset=$_GET['offset'];
+		
+		$page=0;
+		if(isset($_GET['page'])){
+			$page=$_GET['page'];
 		}
 
-		$next=$offset+4;
-		$prev=$offset-4;
+		$limit=5;
+		$offset=$page*$limit;		
+		
 
-		$posts=Post::model()->getDateUpdatedDesc(4,$offset);
+		$posts=Post::model()->getDateUpdatedDesc($limit,$offset);
 		$count=Post::model()->count($criteria);
-		$this->render('latest',array('posts'=>$posts,'count'=>$count,'next'=>$next,'prev'=>$prev));
+		
+		$pages=ceil($count/$limit);
+		
+		$num_of_pages=$pages;
+	
+		
+		/*
+		$front_limit_pages=5;
+		
+		if( ($page-$front_limit_pages) < 0)
+		{
+			$front_limit_pages=0;
+		}else{
+			$front_limit_pages=$page-$front_limit_pages;
+		}
+		*/
+		
+		$front_limit_pages=$this->getFrontLimitPage($num_of_pages,$page,5);
+		
+		/*
+		$back_limit_pages=5;
+		if( ($back_limit_pages + $page) > $num_of_pages)
+		{
+			$back_limit_pages=$num_of_pages;
+		}else{
+			$back_limt_pages=$page+$back_limit_pages;
+		}
+		*/
+		
+		$back_limit_pages=$this->getBackLimitPage($num_of_pages,$page,5);
+		
+		$this->render('latest',array('posts'=>$posts,'page'=>$page,'count'=>$count,'pages'=>$pages,
+		'back_limit'=>$back_limit_pages,'front_limit'=>$front_limit_pages));
+	}
+	
+	protected function getFrontLimitPage($pages,$current_page,$front_limit_pages){
+		
+		if( ($current_page-$front_limit_pages) < 0)
+		{
+			//$front_limit_pages=0;
+			return 0;
+		}else{
+			//$front_limit_pages=$current_page-$front_limit_pages;
+			return $current_page-$front_limit_pages;
+		}
+	}
+	
+	protected function getBackLimitPage($pages,$current_page,$back_limit_pages){
+		if( ($back_limit_pages + $page) > $pages)
+		{
+			return $pages;
+		}else{
+			return $page+$back_limit_pages;
+		}
 	}
 	
 	public function actionPopular(){
@@ -161,7 +210,7 @@ class PostController extends Controller
 		if(isset($_GET['offset'])){	
 			$offset=$_GET['offset'];
 		}
-
+		
 		$next=$offset+4;
 		$prev=$offset-4;
 
