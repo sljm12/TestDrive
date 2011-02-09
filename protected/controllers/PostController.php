@@ -1,8 +1,9 @@
 <?php
 
 require 'screenshot.php';
+require 'AbstractListPageController.php';
 
-class PostController extends Controller
+class PostController extends AbstractListPageController
 {
 	public function actionIndex()
 	{
@@ -148,39 +149,23 @@ class PostController extends Controller
 
 		$posts=Post::model()->getDateUpdatedDesc($limit,$offset);
 		$count=Post::model()->count($criteria);
-		
+		/*
 		$pages=ceil($count/$limit);
 		
 		$num_of_pages=$pages;
 	
 		
-		/*
-		$front_limit_pages=5;
-		
-		if( ($page-$front_limit_pages) < 0)
-		{
-			$front_limit_pages=0;
-		}else{
-			$front_limit_pages=$page-$front_limit_pages;
-		}
-		*/
-		
 		$front_limit_pages=$this->getFrontLimitPage($num_of_pages,$page,5);
-		
-		/*
-		$back_limit_pages=5;
-		if( ($back_limit_pages + $page) > $num_of_pages)
-		{
-			$back_limit_pages=$num_of_pages;
-		}else{
-			$back_limt_pages=$page+$back_limit_pages;
-		}
-		*/
 		
 		$back_limit_pages=$this->getBackLimitPage($num_of_pages,$page,5);
 		
 		$this->render('latest',array('posts'=>$posts,'page'=>$page,'count'=>$count,'pages'=>$pages,
 		'back_limit'=>$back_limit_pages,'front_limit'=>$front_limit_pages));
+		*/
+		$viewArray=$this->getViewArray($count,$limit,$page,$limit);
+		$viewArray['posts']=$posts;
+		$this->render('latest',$viewArray);
+		
 	}
 	
 	protected function getFrontLimitPage($pages,$current_page,$front_limit_pages){

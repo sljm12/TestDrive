@@ -1,6 +1,8 @@
 <?php
 
-class BlogShopController extends Controller
+require 'AbstractListPageController.php';
+
+class BlogShopController extends AbstractListPageController
 {
 	public function actionIndex()
 	{
@@ -79,29 +81,14 @@ class BlogShopController extends Controller
 				$page=$_GET['page'];
 			}
 			
-			/*
-			$offset=0;
-			if(isset($_GET['offset'])){
-				$offset=$_GET['offset'];
-			}*/
 			
-			//$offset=$page*$limit;
 			
 			$limit=1;
-			/*
-			if(isset($_GET['limit'])){
-				$limit=$_GET['limit'];
-			}*/
+			
 			
 			$offset=$page*$limit;
 			
-			/*
-			$criteria=new CDbCriteria;			
-			$criteria->with='categories';
-			$criteria->condition='categories.name="photo"';
-			$criteria->limit=1;
-			$shops=Blogshop::model()->findAll($criteria);
-			*/
+			
 			$shops_count=Blogshop::model()->countBySql('SELECT count(*) FROM blogshop, category, blogshop_categories 
 			WHERE blogshop.id = blogshop_categories.blogshopid 
 			AND category.id = blogshop_categories.categoryid 
@@ -113,22 +100,29 @@ class BlogShopController extends Controller
 			AND category.name = :cat 
 			limit :limit offset :offset',array(":cat"=>$cat,":limit"=>(int)$limit,':offset'=>(int)$offset));
 			
+			/*
 			$pages_count=ceil($shops_count/$limit);
 			
 			$front_page_limit=$this->getFrontLimitPage($pages_count,$page,5);
-			$back_page_limit=$this->getBackLimitPage($pages_count,$page,5);
+			$back_page_limit=$this->getBackLimitPage($pages_count,$page,5);									
 			
 			$this->render('list',array('categories'=>$categories,
 								'shops'=>$shops,								
 								'page'=>$page,								
 								'front_limit_pages'=>$front_page_limit,
 								'back_limit_pages'=>$back_page_limit));
+			*/				
+								
+			$viewArray=$this->getViewArray($shops_count,$limit,$page,5);
+			$viewArray['shops']=$shops;
+			$viewArray['categories']=$categories;
+			$this->render('list',$viewArray);
 			return;
 		}
 		
 		$this->render('list',array('categories'=>$categories));
 	}
-	
+	/*
 	protected function getFrontLimitPage($pages,$current_page,$front_limit_pages){
 		
 		if( ($current_page-$front_limit_pages) < 0)
@@ -149,5 +143,5 @@ class BlogShopController extends Controller
 			return $page+$back_limit_pages;
 		}
 	}
-
+*/
 }

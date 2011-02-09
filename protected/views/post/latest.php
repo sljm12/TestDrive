@@ -18,8 +18,8 @@ $this->breadcrumbs=array(
 		echo "Count: $count <br>";
 		echo "Page: $page <br>";
 		echo "Pages: $pages <br>";
-		echo "Front: $front_limit <br>";
-		echo "back: $back_limit <br>";
+		echo "Front: $front_limit_pages <br>";
+		echo "back: $back_limit_pages <br>";
 		echo "<div id=\"links\">";
 		for ($i=0;$i<sizeof($posts);$i++){
 			$post=$posts[$i];
@@ -50,7 +50,7 @@ $this->breadcrumbs=array(
 		echo "</div>";//CLose links
 		
 		echo '<div style="clear:both">';						
-		for($a=$front_limit;$a<$back_limit;$a++){
+		for($a=$front_limit_pages;$a<$back_limit_pages;$a++){
 			//If its the current page
 			if($a==$page){
 				echo '<div class="current_page">'.($a+1).'</div>';
