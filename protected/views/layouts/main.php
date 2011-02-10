@@ -3,6 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
+	<!--
 	<script type="text/javascript">
 
 		var _gaq = _gaq || [];
@@ -15,7 +16,7 @@
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 
-	</script>
+	</script>-->
 	
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js" type="text/javascript"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.style-my-tooltips.js" type="text/javascript"></script>
@@ -55,7 +56,9 @@
 <div class="container" id="page">
 
 	<div id="header">
-		
+		<div id"logo">
+			<img src="assets/logo.png" width="250" height="50"></img>
+		</div>
 		<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
@@ -89,7 +92,7 @@
 		All Rights Reserved.<br/>
 		<!-- <?php echo Yii::powered(); ?>-->
 	</div><!-- footer -->
-
+	
 </div><!-- page -->
 
 </body>
