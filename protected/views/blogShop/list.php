@@ -19,7 +19,8 @@
 <?php
 	//echo 'limit='.$limit.'<br>';
 	//echo 'offset='.$offset.'<br>';
-	echo 'shops_count='.$shops_count.'<br>';
+	//echo 'shops_count='.$shops_count.'<br>';
+	//echo 'shops_count='.$shops_count.'<br>';
 ?>
 
 <h2>Categories <?php 
