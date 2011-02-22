@@ -65,8 +65,8 @@
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'Popular Links', 'url'=>array('/post/popular')),
 				array('label'=>'Latest Links', 'url'=>array('/post/latest')),
-				array('label'=>'Add new link', 'url'=>array('/post/add'),'visible'=>!Yii::app()->user->isGuest),				
-				//array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),				
+				array('label'=>'Add new link', 'url'=>array('/post/add'),'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Blogshop List', 'url'=>array('/blogshop/list'),'visible'=>Yii::app()->user->isGuest),							
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login/Signup', 'url'=>array('/site/openIDLogin'), 'visible'=>Yii::app()->user->isGuest),
@@ -77,7 +77,7 @@
 	</div><!-- header -->
 	
 	<div id="logoBox">		
-		<span id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></span>		
+		<!-- <span id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></span>-->
 		<!--<img id="biglogin" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/login.png" title="You can log in if you have a Google, Yahoo, Facebook or any OpenID Account!"/>-->
 	</div>
 
