@@ -30,14 +30,14 @@ $this->breadcrumbs=array(
 		}
 		echo "</div>";
 
-		echo '<div style="clear:both">';
-		if($prev >= 0){
-			echo "<a href=\"index.php?r=post/popular&offset=$prev\">Prev</a>";
-		}
-		if($next < $count){
-			echo "<a href=\"index.php?r=post/popular&offset=$next\">Next</a>";
-		}else{
-			echo "Last Page";
+		echo '<div style="clear:both">';						
+		for($a=$front_limit_pages;$a<$back_limit_pages;$a++){
+			//If its the current page
+			if($a==$page){
+				echo '<div class="current_page">'.($a+1).'</div>';
+			}else{
+				echo '<a class="not_current_page" href="index.php?r=post/latest&page='.$a.'">'.($a+1).'</a>';
+			}
 		}
 		echo '</div>';
 	?>

@@ -14,12 +14,13 @@ $this->breadcrumbs=array(
 	?>
 -->	
 	<?php
+		/*
 		echo "Offset: $next <br>";
 		echo "Count: $count <br>";
 		echo "Page: $page <br>";
 		echo "Pages: $pages <br>";
 		echo "Front: $front_limit_pages <br>";
-		echo "back: $back_limit_pages <br>";
+		echo "back: $back_limit_pages <br>";*/
 		echo "<div id=\"links\">";
 		for ($i=0;$i<sizeof($posts);$i++){
 			$post=$posts[$i];

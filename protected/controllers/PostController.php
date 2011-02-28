@@ -5,6 +5,9 @@ require 'AbstractListPageController.php';
 
 class PostController extends AbstractListPageController
 {
+
+	protected $global_limit=10;
+	
 	public function actionIndex()
 	{
 		$this->render('index');		
@@ -143,7 +146,7 @@ class PostController extends AbstractListPageController
 			$page=$_GET['page'];
 		}
 
-		$limit=5;
+		$limit=$this->global_limit;
 		$offset=$page*$limit;		
 		
 
@@ -190,17 +193,21 @@ class PostController extends AbstractListPageController
 	}
 	
 	public function actionPopular(){
-		$offset=0;
-		 
-		if(isset($_GET['offset'])){	
-			$offset=$_GET['offset'];
+			
+		$page=0;
+		if(isset($_GET['page'])){
+			$page=$_GET['page'];
 		}
-		
-		$next=$offset+4;
-		$prev=$offset-4;
 
-		$posts=Post::model()->getClicksDesc(4,$offset);
+		$limit=$this->global_limit;
+		$offset=$page*$limit;		
+		
+
+		$posts=Post::model()->getClicksDesc($limit,$offset);
 		$count=Post::model()->count($criteria);
-		$this->render('popular',array('posts'=>$posts,'count'=>$count,'next'=>$next,'prev'=>$prev));
+		
+		$viewArray=$this->getViewArray($count,$limit,$page,$limit);
+		$viewArray['posts']=$posts;
+		$this->render('popular',$viewArray);
 	}
 }
