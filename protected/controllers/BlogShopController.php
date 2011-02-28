@@ -4,6 +4,9 @@ require 'AbstractListPageController.php';
 
 class BlogShopController extends AbstractListPageController
 {
+
+	protected $global_limit=10;
+	
 	public function actionIndex()
 	{
 		$this->render('index');
@@ -83,7 +86,7 @@ class BlogShopController extends AbstractListPageController
 			
 			
 			
-			$limit=1;
+			$limit=$this->global_limit;
 			
 			
 			$offset=$page*$limit;
