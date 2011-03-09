@@ -139,6 +139,10 @@ class SiteController extends Controller
 		return Userdetails::model()->isOpenIdUrlFound($url);
 	}
 	
+	private function isTimeToUpdatePrefs($openIdUrl){
+		
+	}
+	
 	public function actionNewuser(){
 		$model=new Userdetails();
 	
@@ -156,7 +160,19 @@ class SiteController extends Controller
 			}
 		}
 		
-		$this->render('newuser',array('model'=>$model));
+		$this->render('newuser',array('model'=>$model));	
+	}
+	
+	public function actionPreference(){
+		$openidurl=Yii::app()->user->id;
+		$model=new Preference();
 		
+		if(isset($_POST['Preference'])){
+			$model->attributes=$_POST['Preference'];
+			$model->openidurl=$openidurl;
+			$this->render('preference',array('model'=>$model));			
+		}else{		
+			$this->render('preference',array('model'=>$model));
+		}
 	}
 }
