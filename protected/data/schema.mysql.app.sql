@@ -16,7 +16,10 @@ foreign key (postid) references post(id),
 primary key (postid,categoryid),
 foreign key (categoryid) references category(id));
 
-create table userdetails(userid Integer primary key auto_increment, username varchar(50),openidurl varchar(300), email varchar(255));
+create table userdetails(userid Integer primary key auto_increment, username varchar(50),openidurl varchar(300), email varchar(255),updatePref boolean default true);
+
+create table preferences(pref_id Integer primary key auto_increment, openidurl varchar(300), interested_categories varchar(300), email_newsletter boolean
+,primary key(pref_id), foreign key(openidurl) references userdetails(openidurl));
 
 create table blogshop(id Integer primary key auto_increment, shopname varchar(255), url varchar(100), remarks varchar(300));
 
