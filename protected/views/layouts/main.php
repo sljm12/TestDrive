@@ -69,8 +69,8 @@
 				array('label'=>'Blogshop List', 'url'=>array('/blogshop/list'),'visible'=>Yii::app()->user->isGuest),							
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login/Signup', 'url'=>array('/site/openIDLogin'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Login/Signup', 'url'=>array('/site/openIDLogin'), 'visible'=>Yii::app()->user->isGuest),				
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)				
 			),
 		)); ?>
 		</div><!-- mainmenu -->
