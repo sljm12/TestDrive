@@ -37,14 +37,16 @@ should you have any questions.</p>
 -->
 <div id="news">
 Yeah ! ipostishop is launched!
+<a href="">Read more</a>
 </div>
 
 <div id="news_container">
 	<div id="for_owners">
-	For the owners
+		<h2>For Blogshops Owners</h2>
+		Why should you sign up your blog with us ?
 	</div>
 
 	<div id="for_shoppers">
-	for the shoppers
+	<h2>For Shoppers</h2>
 	</div>
 </div>
