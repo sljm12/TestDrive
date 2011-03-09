@@ -1,6 +1,19 @@
 <?php
 class SiteController extends Controller
 {
+	public function filters()
+	{
+		return array('accessControl');
+	}
+	
+	public function accessRules()
+	{
+		return array(
+			array('deny','actions'=>array('preference'),'users'=>array('?')),
+			array('allow','actions'=>array('preference'),'users'=>array('@'))
+		);
+	}
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -165,7 +178,19 @@ class SiteController extends Controller
 	
 	public function actionPreference(){
 		$openidurl=Yii::app()->user->id;
+		if($openidurl==null){
+			throw new CHttpException(401,'Not authorised');
+		}
+		
 		$model=new Preference();
+		
+		$saved_model=Preference::model()->find('openidurl=:openidurl',array(':openidurl'=>$openidurl));
+		
+		if($saved_model!=null){
+			//$model=$user_model;
+		}
+		
+		$model->email_newsletter=true;
 		
 		if(isset($_POST['Preference'])){
 			$model->attributes=$_POST['Preference'];
