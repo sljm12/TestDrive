@@ -37,6 +37,8 @@ should you have any questions.</p>
 -->
 <div id="news">
 Yeah ! ipostishop is launched!
+
+What is ipostishop ? Click on the below links to find out more.
 <a href="">Read more</a>
 </div>
 
@@ -44,9 +46,21 @@ Yeah ! ipostishop is launched!
 	<div id="for_owners">
 		<h2>For Blogshops Owners</h2>
 		Why should you sign up your blog with us ?
+		<ol>
+			<li>We provide a central place for you to advertise your goods and services.<li>
+			<li>We aim to provide tools to help you advertise.</li>
+			<li>We aim to be the no1 blogshop directory in Singapore and we need your help!</li>
+			
+		</ol>
 	</div>
 
 	<div id="for_shoppers">
-	<h2>For Shoppers</h2>
+		<h2>For Shoppers</h2>
+		<ol>
+			<li>Always know whats new from your favourite shops!</li>
+			<li>Discover new shops and new products everyday!</li>
+			<li>Subscribe to our facebook, twitter and email newsletter to always keep uself updated!</li>
+			<li>Tell your friends about your favourite blogs</li>
+		</ol>
 	</div>
 </div>
