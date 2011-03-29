@@ -93,4 +93,8 @@ class Preference extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function findByOpenId($openid){
+		return Preference::model()->find('openidurl=:openidurl',array(':openidurl'=>$openid));
+	}
 }

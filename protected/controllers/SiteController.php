@@ -1,6 +1,7 @@
 <?php
 class SiteController extends Controller
 {
+
 	public function filters()
 	{
 		return array('accessControl');
@@ -184,17 +185,19 @@ class SiteController extends Controller
 		
 		$model=new Preference();
 		
-		$saved_model=Preference::model()->find('openidurl=:openidurl',array(':openidurl'=>$openidurl));
+		$saved_model=Preference::model()->findByOpenId($openidurl);
 		
 		if($saved_model!=null){
-			//$model=$user_model;
+			$model = &$saved_model;
 		}
 		
-		$model->email_newsletter=true;
+		$categories=Category::model()->getAllCategories();
+		//$model->email_newsletter=true;
 		
 		if(isset($_POST['Preference'])){
 			$model->attributes=$_POST['Preference'];
 			$model->openidurl=$openidurl;
+			$model->save();
 			$this->render('preference',array('model'=>$model));			
 		}else{		
 			$this->render('preference',array('model'=>$model));
