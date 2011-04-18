@@ -141,6 +141,9 @@ class PostController extends AbstractListPageController
 	
 	public function actionLatest(){
 		
+
+		
+
 		$page=0;
 		if(isset($_GET['page'])){
 			$page=$_GET['page'];
@@ -151,6 +154,9 @@ class PostController extends AbstractListPageController
 		
 
 		$posts=Post::model()->getDateUpdatedDesc($limit,$offset);
+		
+		$criteria=new CDbCriteria();
+		$criteria->order='dateUpdated desc';
 		$count=Post::model()->count($criteria);
 		/*
 		$pages=ceil($count/$limit);
@@ -193,7 +199,7 @@ class PostController extends AbstractListPageController
 	}
 	
 	public function actionPopular(){
-			
+				
 		$page=0;
 		if(isset($_GET['page'])){
 			$page=$_GET['page'];
@@ -204,6 +210,9 @@ class PostController extends AbstractListPageController
 		
 
 		$posts=Post::model()->getClicksDesc($limit,$offset);
+		
+		$criteria=new CDbCriteria();
+		$criteria->order='clicks desc';
 		$count=Post::model()->count($criteria);
 		
 		$viewArray=$this->getViewArray($count,$limit,$page,$limit);
