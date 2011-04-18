@@ -1,3 +1,7 @@
+create table userdetails(userid Integer primary key auto_increment, username varchar(50),openidurl varchar(300), email varchar(255),updatePref boolean default true);
+
+create index idx_userdetails_openidurl on userdetails(openidurl);
+
 create table post (id Integer Not null primary key auto_increment,
 		title varchar(255) not null,
 		url varchar(255) not null,
@@ -16,10 +20,9 @@ foreign key (postid) references post(id),
 primary key (postid,categoryid),
 foreign key (categoryid) references category(id));
 
-create table userdetails(userid Integer primary key auto_increment, username varchar(50),openidurl varchar(300), email varchar(255),updatePref boolean default true);
 
 create table preferences(pref_id Integer primary key auto_increment, openidurl varchar(300), interested_categories varchar(300), email_newsletter boolean
-,primary key(pref_id), foreign key(openidurl) references userdetails(openidurl));
+, foreign key(openidurl) references userdetails(openidurl));
 
 create table blogshop(id Integer primary key auto_increment, shopname varchar(255), url varchar(100), remarks varchar(300), userid Integer not null, foreign key userid references userdetails(userid));
 
