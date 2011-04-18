@@ -11,6 +11,7 @@ class Blogshop extends CActiveRecord
 	 * @var string $shopname
 	 * @var string $url
 	 * @var string $remarks
+	 * @var integer $userid
 	 */
 
 	/**
@@ -38,12 +39,14 @@ class Blogshop extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('userid', 'required'),
+			array('userid', 'numerical', 'integerOnly'=>true),
 			array('shopname', 'length', 'max'=>255),
 			array('url', 'length', 'max'=>100),
 			array('remarks', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, shopname, url, remarks', 'safe', 'on'=>'search'),
+			array('id, shopname, url, remarks, userid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +72,7 @@ class Blogshop extends CActiveRecord
 			'shopname' => 'Shopname',
 			'url' => 'Url',
 			'remarks' => 'Remarks',
+			'userid' => 'Userid',
 		);
 	}
 
@@ -90,6 +94,8 @@ class Blogshop extends CActiveRecord
 		$criteria->compare('url',$this->url,true);
 
 		$criteria->compare('remarks',$this->remarks,true);
+
+		$criteria->compare('userid',$this->userid);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
