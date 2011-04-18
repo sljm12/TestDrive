@@ -66,6 +66,7 @@
 				array('label'=>'Popular Links', 'url'=>array('/post/popular')),
 				array('label'=>'Latest Links', 'url'=>array('/post/latest')),
 				array('label'=>'Add new link', 'url'=>array('/post/add'),'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Add new Blogshop', 'url'=>array('/blogshop/add'),'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Blogshop List', 'url'=>array('/blogshop/list'),'visible'=>Yii::app()->user->isGuest),							
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
