@@ -7,7 +7,7 @@
 </style>
 <div class="form">
 <?php
-echo $model->openidurl;
+//echo $model->openidurl;
 ?>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'site-preference-form',
@@ -18,10 +18,6 @@ echo $model->openidurl;
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-	
-	</div>
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'Receive our news letter'); ?>
@@ -29,7 +25,7 @@ echo $model->openidurl;
 		<?php echo $form->error($model,'email_newsletter'); ?>
 	</div>
 	
-	<div class="row">
+	<div id="categories">	
 		
 	</div>
 
