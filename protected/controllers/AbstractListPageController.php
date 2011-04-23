@@ -21,9 +21,20 @@ class AbstractListPageController extends Controller
 			return $current_page-$front_limit_pages;
 		}
 	}
-	
+
+	/*
+	 * pages_count = Total number of pages for the content
+	 * current_page = Where the current page is
+	 * back_limit_pages = how many pages to show from the back 
+	 *
+	 * Example
+	 * current_page =3
+	 * pages_count=10
+	 * back_limit_pages=2
+	 * We will show from page 3-5 
+	 */	
 	protected function getBackLimitPage($pages_count,$current_page,$back_limit_pages){
-		if( ($back_limit_pages + $page) > $pages_count)
+		if( ($back_limit_pages + $current_page) > $pages_count)
 		{
 			return $pages_count;
 		}else{
