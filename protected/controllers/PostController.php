@@ -190,11 +190,11 @@ class PostController extends AbstractListPageController
 	}
 	
 	protected function getBackLimitPage($pages,$current_page,$back_limit_pages){
-		if( ($back_limit_pages + $page) > $pages)
+		if( ($back_limit_pages + $current_page) > $pages)
 		{
 			return $pages;
 		}else{
-			return $page+$back_limit_pages;
+			return $current_page+$back_limit_pages;
 		}
 	}
 	
