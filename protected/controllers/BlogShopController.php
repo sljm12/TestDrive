@@ -54,11 +54,14 @@ class BlogShopController extends AbstractListPageController
 	public function actionAdd(){
 		$model=new Blogshop;
 		$categories=Category::getAllCategories();
+		$selected_categories=array();
 
 		if(isset($_POST['Blogshop'])){
 			$model->attributes=$_POST['Blogshop'];
+			$model->openidurl=YII::app()->user->id;
 			if($model->validate()){
-				$selected_categories=$_POST['category'];				
+				$selected_categories=$_POST['category'];
+				Yii::trace(print_r($_POST['category']),'application');				
 				if($model->save()){
 					$model->addCategories($model->id,$selected_categories);
 					$this->redirect(array('list'));
@@ -123,7 +126,7 @@ class BlogShopController extends AbstractListPageController
 			return;
 		}
 		
-		$this->render('list',array('categories'=>$categories));
+		$this->render('list',array('categories'=>$categories,'shops'=>array(),'front_limit_pages'=>0,'back_limit_pages'=>0,'page'=>0));
 	}
 	/*
 	protected function getFrontLimitPage($pages,$current_page,$front_limit_pages){

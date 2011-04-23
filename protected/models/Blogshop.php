@@ -2,18 +2,20 @@
 
 /**
  * This is the model class for table "blogshop".
+ *
+ * The followings are the available columns in table 'blogshop':
+ * @property integer $id
+ * @property string $shopname
+ * @property string $url
+ * @property string $remarks
+ * @property string $openidurl
+ *
+ * The followings are the available model relations:
+ * @property Userdetails $openidurl0
+ * @property Category[] $categories
  */
 class Blogshop extends CActiveRecord
 {
-	/**
-	 * The followings are the available columns in table 'blogshop':
-	 * @var integer $id
-	 * @var string $shopname
-	 * @var string $url
-	 * @var string $remarks
-	 * @var integer $userid
-	 */
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Blogshop the static model class
@@ -39,14 +41,13 @@ class Blogshop extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userid', 'required'),
-			array('userid', 'numerical', 'integerOnly'=>true),
+			array('openidurl', 'required'),
 			array('shopname', 'length', 'max'=>255),
 			array('url', 'length', 'max'=>100),
-			array('remarks', 'length', 'max'=>300),
+			array('remarks, openidurl', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, shopname, url, remarks, userid', 'safe', 'on'=>'search'),
+			array('id, shopname, url, remarks, openidurl', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,6 +59,7 @@ class Blogshop extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'openidurl0' => array(self::BELONGS_TO, 'Userdetails', 'openidurl'),
 			'categories' => array(self::MANY_MANY, 'Category', 'blogshop_categories(blogshopid, categoryid)'),
 		);
 	}
@@ -72,7 +74,7 @@ class Blogshop extends CActiveRecord
 			'shopname' => 'Shopname',
 			'url' => 'Url',
 			'remarks' => 'Remarks',
-			'userid' => 'Userid',
+			'openidurl' => 'Openidurl',
 		);
 	}
 
@@ -88,14 +90,10 @@ class Blogshop extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-
 		$criteria->compare('shopname',$this->shopname,true);
-
 		$criteria->compare('url',$this->url,true);
-
 		$criteria->compare('remarks',$this->remarks,true);
-
-		$criteria->compare('userid',$this->userid);
+		$criteria->compare('openidurl',$this->openidurl,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
@@ -106,9 +104,12 @@ class Blogshop extends CActiveRecord
 		$connection=Yii::app()->db;
 		$command=$connection->createCommand('insert into blogshop_categories values(:blogshopid,:categoryid)');
 		$command->bindParam(':blogshopid',$blogshopid,PDO::PARAM_INT);
-
+		Yii::trace("Size of Categories".sizeof($categories),'application');
+		Yii::trace("Categories".print_r($categories),'application');
 		foreach($categories as $category){
 			$command->bindParam(':categoryid',$category,PDO::PARAM_INT);
+			$message='Category'.$category;
+			
 			$command->execute();
 		}
 	}	

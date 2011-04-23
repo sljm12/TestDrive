@@ -47,7 +47,7 @@
 			//echo CHtml::checkBox($category->id);
 			echo <<<BLOCK
 				<label class="category_label" for="$category->name">
-					<input class="category_input" id="$category->id" type="checkbox" value="1" name="category[$category->id]"/>
+					<input class="category_input" id="$category->id" type="checkbox" value="$category->id" name="category[$category->id]"/>
 					$category->name
 				</label>
 BLOCK;
