@@ -50,6 +50,7 @@ class Blogshop extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, shopname, url, remarks, openidurl, rssUrl', 'safe', 'on'=>'search'),
+			array('rssUrl, url','url')
 		);
 	}
 
