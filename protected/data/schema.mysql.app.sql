@@ -24,7 +24,7 @@ foreign key (categoryid) references category(id));
 create table preferences(pref_id Integer primary key auto_increment, openidurl varchar(300), interested_categories varchar(300), email_newsletter boolean
 , foreign key(openidurl) references userdetails(openidurl));
 
-create table blogshop(id Integer primary key auto_increment, shopname varchar(255), url varchar(100), remarks varchar(300), openidurl varchar(300) not null, foreign key (openidurl) references userdetails(openidurl));
+create table blogshop(id Integer primary key auto_increment, shopname varchar(255), url varchar(100), remarks varchar(300), openidurl varchar(300) not null, rssUrl varchar(500), foreign key (openidurl) references userdetails(openidurl));
 
 create table blogshop_categories(blogshopid Integer,categoryid Integer,
 foreign key (blogshopid) references blogshop(id),

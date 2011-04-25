@@ -9,6 +9,7 @@
  * @property string $url
  * @property string $remarks
  * @property string $openidurl
+ * @property string $rssUrl
  *
  * The followings are the available model relations:
  * @property Userdetails $openidurl0
@@ -45,9 +46,10 @@ class Blogshop extends CActiveRecord
 			array('shopname', 'length', 'max'=>255),
 			array('url', 'length', 'max'=>100),
 			array('remarks, openidurl', 'length', 'max'=>300),
+			array('rssUrl', 'length', 'max'=>500),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, shopname, url, remarks, openidurl', 'safe', 'on'=>'search'),
+			array('id, shopname, url, remarks, openidurl, rssUrl', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,6 +77,7 @@ class Blogshop extends CActiveRecord
 			'url' => 'Url',
 			'remarks' => 'Remarks',
 			'openidurl' => 'Openidurl',
+			'rssUrl' => 'Rss Url',
 		);
 	}
 
@@ -94,6 +97,7 @@ class Blogshop extends CActiveRecord
 		$criteria->compare('url',$this->url,true);
 		$criteria->compare('remarks',$this->remarks,true);
 		$criteria->compare('openidurl',$this->openidurl,true);
+		$criteria->compare('rssUrl',$this->rssUrl,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

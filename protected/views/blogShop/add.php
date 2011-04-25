@@ -35,6 +35,12 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'rssUrl'); ?>
+		<?php echo $form->textField($model,'rssUrl'); ?>
+		<?php echo $form->error($model,'rssUrl'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'remarks'); ?>
 		<?php echo $form->textArea($model,'remarks'); ?>
 		<?php echo $form->error($model,'remarks'); ?>
