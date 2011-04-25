@@ -72,6 +72,18 @@ class BlogShopController extends AbstractListPageController
 		}
 		$this->render('add',array('model'=>$model,'categories'=>$categories,'selected'=>$selected_categories));
 	}
+
+	public function actionView(){
+		if(isset($_GET['id'])){
+			$id=$_GET['id'];
+			$model=new Blogshop();
+			$model=Blogshop::model()->find('id=:id',array('id'=>$id));
+
+			$this->render('view',array('model'=>$model));
+		}else{
+			throw new CHttpException(500,'The record cannot be found');
+		}
+	}
 	
 	public function actionList(){
 		
@@ -128,26 +140,4 @@ class BlogShopController extends AbstractListPageController
 		
 		$this->render('list',array('categories'=>$categories,'shops'=>array(),'front_limit_pages'=>0,'back_limit_pages'=>0,'page'=>0));
 	}
-	/*
-	protected function getFrontLimitPage($pages,$current_page,$front_limit_pages){
-		
-		if( ($current_page-$front_limit_pages) < 0)
-		{
-			//$front_limit_pages=0;
-			return 0;
-		}else{
-			//$front_limit_pages=$current_page-$front_limit_pages;
-			return $current_page-$front_limit_pages;
-		}
-	}
-	
-	protected function getBackLimitPage($pages,$current_page,$back_limit_pages){
-		if( ($back_limit_pages + $page) > $pages)
-		{
-			return $pages;
-		}else{
-			return $page+$back_limit_pages;
-		}
-	}
-*/
 }
