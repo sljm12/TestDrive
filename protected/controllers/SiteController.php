@@ -111,6 +111,7 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
+		Yii::app()->getSession()->destroy();
 		$this->redirect(Yii::app()->homeUrl);
 	}
 	
@@ -141,7 +142,8 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->homeUrl);
 			}else{
 				Yii::app()->user->login($openid);
-				$this->redirect(array('newuser'));
+				//$this->redirect(array('newuser'));
+				$this->redirect(array('userdetails/create'));
 			}
 			return;
         }
@@ -159,6 +161,11 @@ class SiteController extends Controller
 	
 	public function actionNewuser(){
 		$model=new Userdetails();
+
+		$openIdUrl=Yii::app()->user->id;
+		if($this->openidUrlFound($openIdUrl)){
+			$model=Userdetails::model()->getUserByOpenIdUrl($openIdUrl);
+		}
 	
 		if(isset($_POST['Userdetails'])){
 			$model->attributes=$_POST['Userdetails'];
