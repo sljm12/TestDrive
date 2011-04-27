@@ -17,7 +17,7 @@
 	<div class="providers">
 		<span id="google" class="provider"><img src="<?php echo Yii::app()->request->baseUrl;?>/assets/openid/google.png" width=100/></span>
 		<span id="yahoo" class="provider"><img src="<?php echo Yii::app()->request->baseUrl;?>/assets/openid/yahoo.png" width=100/></span>
-		<span id="facebook" class="provider"><img src="<?php echo Yii::app()->request->baseUrl;?>/assets/openid/facebook.jpg" width=100/></span>
+		<!-- <span id="facebook" class="provider"><img src="<?php echo Yii::app()->request->baseUrl;?>/assets/openid/facebook.jpg" width=100/></span> -->
 		<span id="myopenid" class="provider"><img src="<?php echo Yii::app()->request->baseUrl;?>/assets/openid/myopenid.jpg" width=100/></span>
 	</div>
 	<p>
