@@ -1,5 +1,8 @@
 create table userdetails(userid Integer primary key auto_increment, username varchar(50),openidurl varchar(300), email varchar(255),updatePref boolean default true);
 
+Alter table userdetails add column(blogshopowner boolean default false);
+Alter table userdetails add column(receiveEmail boolean default true);
+
 create index idx_userdetails_openidurl on userdetails(openidurl);
 
 create table post (id Integer Not null primary key auto_increment,
