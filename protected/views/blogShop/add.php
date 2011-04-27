@@ -10,14 +10,13 @@
 <div class="form">
 
 <?php
-	echo 'Selected categories'.count($selected);
+//	echo 'Selected categories'.count($selected);
 ?>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'blogshop-add-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<?php echo Yii::app()->user->id; ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
