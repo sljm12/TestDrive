@@ -30,6 +30,18 @@
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'receiveEmail'); ?>
+		<?php echo $form->textArea($model,'receiveEmail'); ?>
+		<?php echo $form->error($model,'receiveEmail'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'blogshopowner'); ?>
+		<?php echo $form->textArea($model,'blogshopowner'); ?>
+		<?php echo $form->error($model,'blogshopowner'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>
