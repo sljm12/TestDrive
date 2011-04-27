@@ -462,7 +462,9 @@ class EOpenID extends CBaseUserIdentity
             'openid.ns'          => 'http://specs.openid.net/auth/2.0',
             'openid.mode'        => 'checkid_setup',
             'openid.return_to'   => $this->returnUrl,
-            'openid.realm'       => $this->trustRoot,
+	    'openid.realm'       => $this->trustRoot,
+	    'openid.ns.pape'     => 'http://specs.openid.net/extensions/pape/1.0',
+            'openid.pape.max_auth_age' => 0,
         );
         if ($this->ax) {
             $params += $this->axParams();
