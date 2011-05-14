@@ -18,7 +18,7 @@ return array(
 		'application.components.*',
 		'application.vendor.*',
 		'application.vendor.idn.*',
-		'application.vendor.SimplePie.*',
+		//'application.vendor.SimplePie.*',
 	),
 	
 	'modules'=>array(
