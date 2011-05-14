@@ -1,7 +1,7 @@
 <?php
 
 require 'AbstractListPageController.php';
-
+//require (YII::app()->getBasePath().'/models/Category.php');
 class BlogShopController extends AbstractListPageController
 {
 

@@ -7,6 +7,7 @@
 		vertical-align:bottom;
 	}
 </style>
+
 <div class="form">
 
 <?php
@@ -44,7 +45,9 @@
 		<?php echo $form->textArea($model,'remarks'); ?>
 		<?php echo $form->error($model,'remarks'); ?>
 	</div>
-	
+
+	<div>
+	<h2>Categories</h2>
 	<?php 
 		for($i=0;$i<sizeof($categories);$i++){
 			$category=$categories[$i];
@@ -57,7 +60,12 @@
 				</label>
 BLOCK;
 		}
-	?>
+?>
+	</div>
+	<p>
+	<div class="row">
+		<label class="category_label"><input id="ownerCheckBox" class="category_input" type=CHECKBOX name="owner">Are you the owner of this blogshop?</label>
+	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>
@@ -65,3 +73,23 @@ BLOCK;
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script>
+function checkOwner(){
+	var checked=$("#ownerCheckBox:checked").val();
+	if(checked === 'on'){
+		return true;
+	}else{
+		return false;
+	}
+}
+$("form").submit(function (){
+	var checked=$("#ownerCheckBox:checked").val();
+	if(checked === 'on'){
+		alert('Submit');
+		return true;
+	}else{
+		return false;
+	}
+	});
+</script>
