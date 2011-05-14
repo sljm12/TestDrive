@@ -29,6 +29,8 @@ create table preferences(pref_id Integer primary key auto_increment, openidurl v
 
 create table blogshop(id Integer primary key auto_increment, shopname varchar(255), url varchar(100), remarks varchar(300), openidurl varchar(300) not null, rssUrl varchar(500), foreign key (openidurl) references userdetails(openidurl));
 
+alter table blogshop add column(last_update datetime);
+
 create table blogshop_categories(blogshopid Integer,categoryid Integer,
 foreign key (blogshopid) references blogshop(id),
 primary key (blogshopid,categoryid),
