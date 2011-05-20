@@ -73,6 +73,8 @@ class PostController extends AbstractListPageController
 			$categories=$this->getCategoriesfromPost();
 			
 			$model->userid=Yii::app()->user->id;
+			$model->dateUpdated=new CDbExpression("now()");//THis is the one to use for MySql
+			$model->clicks=1;
 			if($model->validate())
 			{
 				// form inputs are valid, do something here
@@ -112,7 +114,7 @@ class PostController extends AbstractListPageController
 
 	
 	public function actionView(){
-		$model==null;
+		$model=null;
 		
 		if(isset($_GET['id']))
 				$model=Post::model()->findbyPk($_GET['id']);
@@ -123,7 +125,7 @@ class PostController extends AbstractListPageController
 	}
 	
 	public function actionClick(){
-		$model==null;
+		$model=null;
 		
 		if(isset($_GET['id'])){
 				$model=Post::model()->findbyPk($_GET['id']);
