@@ -15,6 +15,9 @@ create table post (id Integer Not null primary key auto_increment,
 		foreign key (userid) references userdetails(openidurl)
 );
 
+alter table post add column (file_hash varchar(64) default null);
+alter table post add column (blogid integer, foreign key (blogid) references blogshop(id));
+
 create table category(id Integer Not Null primary key auto_increment,
 name varchar(255) not null);
 
