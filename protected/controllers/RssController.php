@@ -13,22 +13,62 @@ class RssController extends Controller
 		//$rss->load('http://localhost/rss/stephen.xml');
 		//$rss=new FeedParser();
 		//$rss->parse('http://localhost/rss/rss2.xml');
-		$id=1;
+		if(isset($_GET['id'])){
+			$id=$_GET['id'];
+			$blogshop=BlogShop::model()->findByPk($id);
+			if($blogshop==null){
+				throw new  CHttpException('id is not a valid blog id');
+			}
+			$feed=$this->get_feed($blogshop->rssUrl);
+
+			$items=$feed->get_items();
+			$first=$items[0];
+
+
+			$results=$this->filter_rss_items($blogshop->last_update,$items);
+			$this->write_results($id,$results);
+			$this->update_latest_time($blogshop,$first);
+
+			$this->render('index',array('feed_items'=>$results));
+		}else{
+			throw new CHttpException('No id specified');
+		}
+	}
+
+	private function is_blog_present($id){
 		$blogshop=BlogShop::model()->findByPk($id);
+		if($blogshop == null){
+			return $blogshop;
+		}else{
+			return null;
+		}
+	}
+
+	private function get_feed($feed_url){
 		$feed=new SimplePie();
-		$feed->set_feed_url('http://localhost/rss/stephen.xml');
+		$feed->set_feed_url($feed_url);
 		$feed->enable_order_by_date(true);
 		$feed->set_item_limit(3);
 		$feed->init();
 		$feed->handle_content_type();
+		return $feed;
+	}
 
-		$items=$feed->get_items();
-		$first=$items[0];
-		
-
-		$this->update_latest_time($blogshop,$first);
-
-		$this->render('index',array('feed_items'=>$feed->get_items()));
+	/* Returns only valid rss items since the last_update in the blogshop
+	 */
+	private function filter_rss_items($blog_last_update,$rss_items){
+		$last_update=strtotime($blog_last_update);
+		if($last_update==null){
+			return $rss_items;
+		}else{
+			$results=array();
+			foreach($rss_items as $item){
+				if(strtotime($item->get_date()) > $last_update){
+					$results[]=$item;
+				}
+			}
+			return $results;
+		}
 	}
 
 	/*
@@ -47,6 +87,42 @@ class RssController extends Controller
 			$blogshop->last_update=$first_item->get_date('Y-m-d G:i:s');
 			$blogshop->update();
 		}
+	}
+
+	/**
+	 * Persist results to disk
+	 */
+	private function write_results($blogshop_id,$rss_items){
+		$dest_dir='c:/xampp/htdocs/testdrive/protected/sitedata';
+		if(!is_dir($dest_dir)){
+			mkdir($dest_dir);
+		}
+		foreach($rss_items as $item){
+			$hash_filename=hash('sha256',$item->get_title());
+			$fh=fopen($dest_dir.'/'.$hash_filename,'w+');
+			fwrite($fh,$item->get_content());
+			fclose($fh);
+			$this->write_to_db($blogshop_id,$item,$hash_filename);
+		}
+	}
+
+	private function write_to_db($blogshop_id,$rss_item,$hash_filename){
+		$post=new Post();
+		$post->dateUpdated=$rss_item->get_date();
+		$post->title=$rss_item->get_title();
+		//$post->url=$rss_item->get_link();
+		$post->url='http://www.stephen.com';
+		$post->remarks='Hello';
+		$post->file_hash=$hash_filename;
+		$post->blogid=$blogshop_id;
+		if(!$post->validate(null,true)){
+			$error_string='';
+			throw new CHttpException(500,'Error in validation '.print_r($post->getErrors()));
+		}
+		if(!$post->save()){
+			throw new CHttpException(500,'Error in saving');
+		}
+		
 	}
 
 	// Uncomment the following methods and override them if needed
