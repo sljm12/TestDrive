@@ -79,7 +79,13 @@ class BlogShopController extends AbstractListPageController
 			$model=new Blogshop();
 			$model=Blogshop::model()->find('id=:id',array('id'=>$id));
 
-			$this->render('view',array('model'=>$model));
+			$params=new CDbCriteria();
+			$params->condition='blogid=:blogid';
+			$params->params=array('blogid'=>$id);
+			$params->order='dateUpdated desc';
+			$blog_posts=Post::model()->findAll($params);
+
+			$this->render('view',array('model'=>$model,'blog_posts'=>$blog_posts));
 		}else{
 			throw new CHttpException(500,'The record cannot be found');
 		}

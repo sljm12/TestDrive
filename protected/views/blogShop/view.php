@@ -9,4 +9,10 @@ $this->breadcrumbs=array(
 	<div id="linkInfo" style="float:right;width:60%;">
 		<h1><?php echo '<a href="'.$model->url.'">' ?><?php echo $model->shopname; ?></a></h1>
 	</div>
+	<div id="posts">
+<?php 
+foreach($blog_posts as $post){
+	echo $post->title.'<br>';
+}?>
+	</div>
 </p>
