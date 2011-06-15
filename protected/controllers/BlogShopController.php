@@ -146,4 +146,23 @@ class BlogShopController extends AbstractListPageController
 		
 		$this->render('list',array('categories'=>$categories,'shops'=>array(),'front_limit_pages'=>0,'back_limit_pages'=>0,'page'=>0));
 	}
+	
+	private function get10LatestBlogShops(){
+		$criteria=new CDbCriteria();
+		$criteria->order='last_update desc';
+		$criteria->limit=10;
+		return Blogshop::model()->findAll($criteria);
+	}
+	
+	public function actionListNewA(){
+		$blogs=$this->get10LatestBlogShops();
+		$blog_array=array();
+	
+		foreach($blogs as $blog=>$b){
+			//$b=$blogs[$blog];
+			$blog_array[]=array('shopname'=>$b->shopname,'url'=>$b->url);
+		}
+		$this->renderPartial('ajax',array('ajax'=>json_encode($blog_array)));
+	}
+	
 }
