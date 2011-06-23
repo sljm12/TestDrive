@@ -149,7 +149,7 @@ class BlogShopController extends AbstractListPageController
 	
 	private function get10LatestBlogShops(){
 		$criteria=new CDbCriteria();
-		$criteria->order='last_update desc';
+		$criteria->order='last_update asc';
 		$criteria->limit=10;
 		return Blogshop::model()->findAll($criteria);
 	}
